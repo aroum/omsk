@@ -1,0 +1,3082 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "4d87f7af-fcda-46eb-9ce9-6718315b4a84")
+	(paper "A5")
+	(title_block
+		(title "Omsk: KBD")
+		(date "2026-03-23")
+		(rev "0.11")
+	)
+	(lib_symbols
+		(symbol "Diode:1N4148W"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "1N4148W"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "Diode_SMD:D_SOD-123"
+				(at 0 -4.445 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "75V 0.15A Fast Switching Diode, SOD-123"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "D*SOD?123*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "1N4148W_0_1"
+				(polyline
+					(pts
+						(xy -1.27 1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 1.27) (xy 1.27 -1.27) (xy -1.27 0) (xy 1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "1N4148W_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "_reviung-kbd:SW_PUSH"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 3.81 2.794 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "_reviung-kbd_SW_PUSH"
+				(at 0 -2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SW_PUSH_0_1"
+				(rectangle
+					(start -4.318 1.27)
+					(end 4.318 1.524)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 1.524) (xy -0.762 2.286) (xy 0.762 2.286) (xy 1.016 1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive inverted
+					(at -7.62 0 0)
+					(length 5.08)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive inverted
+					(at 7.62 0 180)
+					(length 5.08)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(text "sod-323\n"
+		(exclude_from_sim no)
+		(at 81.026 37.084 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "19aac351-89ce-44b5-b8b1-691c7552afec")
+	)
+	(text "MATRIX"
+		(exclude_from_sim no)
+		(at 110.109 19.177 0)
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.4)
+				(bold yes)
+			)
+			(justify left bottom)
+		)
+		(uuid "b51cfdd2-aa29-4ee0-ba4b-65e8db9a722c")
+	)
+	(junction
+		(at 81.28 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "059f9c3b-91fc-483d-98dd-da3398a1e604")
+	)
+	(junction
+		(at 106.68 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2ce5b3f7-2ae2-4c2e-b04b-7f8f35cf127c")
+	)
+	(junction
+		(at 81.28 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3310041a-cff2-47a2-a9b4-f038b8416613")
+	)
+	(junction
+		(at 106.68 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "363b5e0c-6660-40c3-9f17-cc66b976b2d8")
+	)
+	(junction
+		(at 116.84 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4209281d-d2fc-43c8-8e9f-762558f40a78")
+	)
+	(junction
+		(at 66.04 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4cd37dd9-c022-4082-9487-d45234226387")
+	)
+	(junction
+		(at 91.44 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4e2b7a8b-0eca-4b82-8c2e-55ca335db7f9")
+	)
+	(junction
+		(at 142.24 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4fac6116-7a37-4070-9217-2b5dcd368dc8")
+	)
+	(junction
+		(at 81.28 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "505ba69f-a042-4603-84ac-a661951068e0")
+	)
+	(junction
+		(at 66.04 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "584b34e7-daa6-470e-8f0a-fe12179a11d2")
+	)
+	(junction
+		(at 81.28 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5db0cfb8-c9b1-46e3-be7a-84e240563b80")
+	)
+	(junction
+		(at 91.44 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6947abbb-559b-4911-8639-ce03b5ab6de5")
+	)
+	(junction
+		(at 142.24 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e3b84b6-1023-48a9-8f1c-5a11764baa9f")
+	)
+	(junction
+		(at 132.08 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "72a91d15-eb8f-49a6-80d7-709eaf2d855d")
+	)
+	(junction
+		(at 132.08 45.72)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7e0143e6-0933-40e8-9c00-bdf3dcb1d891")
+	)
+	(junction
+		(at 106.68 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "85e71dca-c65e-4219-87ed-b4eba8d587f9")
+	)
+	(junction
+		(at 132.08 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "87343b4c-f516-46b1-a834-7d04ffac2b27")
+	)
+	(junction
+		(at 142.24 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8772d90e-200b-4722-98d3-a53583180ada")
+	)
+	(junction
+		(at 66.04 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8c22a075-aa6a-4d2d-8606-d771ddc10567")
+	)
+	(junction
+		(at 106.68 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8e5f3f91-bb52-4ef3-aef9-227afe5f9814")
+	)
+	(junction
+		(at 116.84 54.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9c06be9a-dce2-4dd8-82be-83db0dc3cc12")
+	)
+	(junction
+		(at 116.84 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a83260a3-8c15-4d46-a62a-737d7b6f0052")
+	)
+	(junction
+		(at 91.44 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3cdfa49-5b06-41e7-8975-79b353a3934d")
+	)
+	(junction
+		(at 132.08 95.25)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cc1440b9-31d9-4204-b205-2910138dc021")
+	)
+	(wire
+		(pts
+			(xy 106.68 95.25) (xy 132.08 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1d0d05d3-52ef-405d-badf-0930fe30b0b8")
+	)
+	(wire
+		(pts
+			(xy 116.84 54.61) (xy 116.84 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fee5849-5ff5-4727-a734-a7e0f046c4be")
+	)
+	(wire
+		(pts
+			(xy 81.28 95.25) (xy 106.68 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2022ba6c-ffc0-403b-94d4-f6a9420493b9")
+	)
+	(wire
+		(pts
+			(xy 63.5 95.25) (xy 81.28 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "228c4197-6ac8-4ae4-ae15-8af6a7bf3873")
+	)
+	(wire
+		(pts
+			(xy 91.44 54.61) (xy 91.44 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2308422b-fbae-45c6-9eda-d6d8035b6cce")
+	)
+	(wire
+		(pts
+			(xy 142.24 38.1) (xy 142.24 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b10255e-e378-4490-aa7b-15c40c68f93a")
+	)
+	(wire
+		(pts
+			(xy 132.08 62.23) (xy 157.48 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ca49640-2a3e-42ef-a8d7-2e3d859f6106")
+	)
+	(wire
+		(pts
+			(xy 81.28 78.74) (xy 106.68 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d6ab2bd-ce83-4a06-ab19-f26c96101e38")
+	)
+	(wire
+		(pts
+			(xy 142.24 71.12) (xy 142.24 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "346d8b54-58c1-4472-a6dc-2a7818f69b44")
+	)
+	(wire
+		(pts
+			(xy 116.84 71.12) (xy 116.84 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cbd2a73-7933-4737-a1ae-d9d3986060db")
+	)
+	(wire
+		(pts
+			(xy 63.5 62.23) (xy 81.28 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bba5a7d-7cac-48f5-8e27-2cc1eba03e48")
+	)
+	(wire
+		(pts
+			(xy 66.04 54.61) (xy 66.04 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5104d11c-1de5-4d46-b4b2-26a9bffd8795")
+	)
+	(wire
+		(pts
+			(xy 91.44 30.48) (xy 91.44 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a9d38ab-f72e-4051-9ddc-d02a7a43127e")
+	)
+	(wire
+		(pts
+			(xy 106.68 45.72) (xy 132.08 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68fa662d-deb9-4fad-902d-f4cea98026f2")
+	)
+	(wire
+		(pts
+			(xy 63.5 45.72) (xy 81.28 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "789d9916-4e6d-4645-a516-e3039d4d88ab")
+	)
+	(wire
+		(pts
+			(xy 91.44 71.12) (xy 91.44 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f0177a5-a401-4676-ae08-ea50331d1f32")
+	)
+	(wire
+		(pts
+			(xy 116.84 30.48) (xy 116.84 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "803b4aa5-a7e0-4bc1-8eea-43a3e5456181")
+	)
+	(wire
+		(pts
+			(xy 91.44 38.1) (xy 91.44 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "834107f3-b5ff-4e23-b2c4-75292a0dfd98")
+	)
+	(wire
+		(pts
+			(xy 142.24 54.61) (xy 142.24 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9e8c643-de1f-4866-982a-017ca2e372ee")
+	)
+	(wire
+		(pts
+			(xy 81.28 62.23) (xy 106.68 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1f8f23b-98d0-4f0e-9dd6-d1afef7dc362")
+	)
+	(wire
+		(pts
+			(xy 66.04 71.12) (xy 66.04 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b489795f-723e-44b0-90c2-537089392bb1")
+	)
+	(wire
+		(pts
+			(xy 63.5 78.74) (xy 81.28 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1f3ee10-08f8-4f56-82de-c3feaadcd705")
+	)
+	(wire
+		(pts
+			(xy 132.08 45.72) (xy 157.48 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c279089e-d799-46ac-adb7-1ad8a336455d")
+	)
+	(wire
+		(pts
+			(xy 106.68 62.23) (xy 132.08 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d32d3e03-37ab-4412-b609-9406bf913e7d")
+	)
+	(wire
+		(pts
+			(xy 66.04 38.1) (xy 66.04 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4c27d73-9522-4885-802d-ec50a0b948e3")
+	)
+	(wire
+		(pts
+			(xy 66.04 30.48) (xy 66.04 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e1f51f95-e424-4280-b376-9d568a759255")
+	)
+	(wire
+		(pts
+			(xy 132.08 95.25) (xy 157.48 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e68815ce-7295-491b-b27b-6aeb6207d294")
+	)
+	(wire
+		(pts
+			(xy 106.68 78.74) (xy 132.08 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6d46a15-0f6e-499c-84c3-cf5122538f25")
+	)
+	(wire
+		(pts
+			(xy 142.24 30.48) (xy 142.24 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e8f1cae4-2349-481d-af15-0a4d43f5c18c")
+	)
+	(wire
+		(pts
+			(xy 132.08 78.74) (xy 157.48 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "efe05087-38da-4cb0-82fb-80c97b541252")
+	)
+	(wire
+		(pts
+			(xy 81.28 45.72) (xy 106.68 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f73afa8f-b603-417b-b425-8e6be40675f2")
+	)
+	(wire
+		(pts
+			(xy 116.84 38.1) (xy 116.84 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fade75bc-8e7b-495b-9e37-efcb6ea839a7")
+	)
+	(global_label "row3"
+		(shape input)
+		(at 63.5 78.74 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "2342054b-97df-4a4d-b0ac-c4e6ed77b708")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 56.0396 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "row4"
+		(shape input)
+		(at 63.5 95.25 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "42ebbc61-1c10-42b1-8c4c-642ef02f8698")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 56.0396 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "row1"
+		(shape input)
+		(at 63.5 45.72 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "50653eae-e3f7-479a-821a-39c82f2f8e8a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 56.0396 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "row2"
+		(shape input)
+		(at 63.5 62.23 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7e4d37fd-90ee-40e1-b886-efd3e2e3af18")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 56.0396 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "col1"
+		(shape input)
+		(at 66.04 30.48 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "95353777-387f-4e1a-8bb2-ae878bac26cd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at -43.18 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "col2"
+		(shape input)
+		(at 91.44 30.48 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c74716b0-a177-4ae9-ba79-389fbaecd405")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at -43.18 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "col4"
+		(shape input)
+		(at 142.24 30.48 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "cdc3c166-f3b0-4b5a-a9de-38799eac4bf5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at -43.18 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "col3"
+		(shape input)
+		(at 116.84 30.48 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d178d5aa-0b1e-4edf-90cb-e05fe46df5c5")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at -43.18 3.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 106.68 41.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0bb77751-9dbb-4696-b2b4-12df42ea14ce")
+		(property "Reference" "D3"
+			(at 108.712 40.7416 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 108.712 43.053 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 111.125 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 106.68 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "340038d8-50cc-4434-af08-92aa890bd389")
+		)
+		(pin "2"
+			(uuid "d5b78a1e-1168-47d7-838f-68b86fcf4829")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 81.28 74.93 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "0c2de838-e6f4-4afa-9238-c55b02bc0233")
+		(property "Reference" "D10"
+			(at 83.312 73.7616 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 83.312 76.073 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 85.725 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 81.28 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4105f14d-9bb2-4f9e-b8ed-d3cd17dd956f")
+		)
+		(pin "2"
+			(uuid "32ad55d8-dd4c-426d-b32b-a35d1db43ff0")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 99.06 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1f743231-839b-428c-983a-8d2391bbe359")
+		(property "Reference" "SW14"
+			(at 99.06 81.153 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 99.06 83.4644 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 99.06 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0cb1b8d0-9f43-4bec-a4bb-239c268886c6")
+		)
+		(pin "2"
+			(uuid "4bad80a8-68ac-401e-827d-9091fcc4fd76")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 124.46 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "20000911-0b05-4a88-8f49-7a092c9945a8")
+		(property "Reference" "SW11"
+			(at 124.46 64.643 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 124.46 66.9544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 124.46 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6f09378c-056f-474c-9412-8b33dc81e260")
+		)
+		(pin "2"
+			(uuid "148ac9b8-c820-49d5-a3c4-891f0e9763d9")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 157.48 74.93 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "252e309e-daf6-499a-8195-120b83d95876")
+		(property "Reference" "D13"
+			(at 159.512 73.7616 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 159.512 76.073 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 161.925 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 157.48 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 157.48 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9d738b39-821d-4569-9dea-98f7116a4c5c")
+		)
+		(pin "2"
+			(uuid "ce643273-f045-4b20-8745-ccb2b3ee2c94")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 157.48 58.42 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "292b36a6-d82c-4734-9594-cff7d9ce2eb2")
+		(property "Reference" "D9"
+			(at 159.512 57.2516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 159.512 59.563 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 161.925 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 157.48 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 157.48 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7c8dd2a3-7667-4f3e-a54e-9489f08bcd76")
+		)
+		(pin "2"
+			(uuid "91b89d1f-e73d-4bff-871c-eeebb27d9595")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 149.86 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "3813fe4e-3136-4345-9b40-4530be0dcfbf")
+		(property "Reference" "SW16"
+			(at 149.86 81.153 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 149.86 83.4644 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 149.86 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "cebe0a7d-10fe-45b3-888d-908891349c8f")
+		)
+		(pin "2"
+			(uuid "f386453a-4d53-479d-afe5-cd87d1b065f8")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 132.08 41.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "39fafc4d-bfcf-443f-b865-f1f5f0a48320")
+		(property "Reference" "D4"
+			(at 134.112 40.7416 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 134.112 43.053 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 136.525 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 132.08 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "b5b1bcb1-a4c2-4b5b-904b-809d71cf37ec")
+		)
+		(pin "2"
+			(uuid "ae804310-9d15-4b6e-9369-8f9b3902ccda")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 106.68 91.44 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "471dc911-e9c5-4c2d-aa79-03d6c76983bf")
+		(property "Reference" "D15"
+			(at 108.712 90.2716 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 108.712 92.583 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 111.125 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 106.68 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ce6ef36f-2d98-4649-94d7-4a6051c4df2d")
+		)
+		(pin "2"
+			(uuid "aabdccac-bc02-4fe8-befe-7f4c9ee337e5")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 149.86 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6b4079b7-80a8-4fd8-943b-f10923ced466")
+		(property "Reference" "SW12"
+			(at 149.86 64.643 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 149.86 66.9544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 149.86 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0b1c68c8-bb2a-439b-9683-10c596f7cfb2")
+		)
+		(pin "2"
+			(uuid "05130130-07ea-485d-994b-bbe33bd7f51c")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 73.66 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6f14a419-468b-42a7-8822-7f5d9697b020")
+		(property "Reference" "SW9"
+			(at 73.66 64.643 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 73.66 66.9544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 73.66 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 73.66 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "dbddc69c-e340-469f-8ddd-88d7d0c47ffc")
+		)
+		(pin "2"
+			(uuid "39fb4530-83bf-438e-99a7-b5bc3665cd42")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 124.46 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "80122e0a-9b87-4761-81de-2daa06cee0c7")
+		(property "Reference" "SW7"
+			(at 124.46 48.133 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 124.46 50.4444 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 124.46 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2a665d63-27d8-4957-aa9a-7d7975cab1c6")
+		)
+		(pin "2"
+			(uuid "7353d38a-c9b3-42b7-a89e-4fb270a53b28")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 73.66 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8486c347-ff27-40f5-86b1-a9d89b5d9f6c")
+		(property "Reference" "SW1"
+			(at 73.66 31.623 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 73.66 33.9344 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 73.66 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 73.66 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f602747b-decb-4a66-a4af-b41116865a40")
+		)
+		(pin "2"
+			(uuid "9cfaf0fe-e664-47d2-be24-0d196f8c3ff0")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 124.46 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "91ab4c90-8168-4241-896b-7ee079a76a08")
+		(property "Reference" "SW15"
+			(at 124.46 81.153 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 124.46 83.4644 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 124.46 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5987d875-0158-4d47-9921-f915cc496d31")
+		)
+		(pin "2"
+			(uuid "fa866264-9c18-49a5-9996-974180553749")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 81.28 41.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "97c47aa7-6261-4e59-8e97-cf262c61f8bd")
+		(property "Reference" "D2"
+			(at 83.312 40.7416 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 83.312 43.053 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 85.725 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 81.28 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4cd29999-d3f6-460f-8179-e81dbb2a695c")
+		)
+		(pin "2"
+			(uuid "feb30c98-c422-4eeb-9a7a-d54b6272f25f")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 132.08 91.44 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "98112f81-20bc-48ae-8c05-9b267ce65529")
+		(property "Reference" "D16"
+			(at 134.112 90.2716 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 134.112 92.583 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 136.525 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7e1dd36a-20be-45ca-8a37-0c6271a9d241")
+		)
+		(pin "2"
+			(uuid "9c6d8fa9-7801-43ba-8a60-be80e3039a4b")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 124.46 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9c930e52-b92d-4320-ac20-b501a0ccf1a7")
+		(property "Reference" "SW3"
+			(at 124.46 31.623 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 124.46 33.9344 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 124.46 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 124.46 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 124.46 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "fd096c42-5334-41f6-af5f-4c7037737604")
+		)
+		(pin "2"
+			(uuid "587f347e-a7c0-4937-947e-b9baa65f85eb")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 157.48 91.44 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a6a945d3-338c-4734-bc04-7912c22f9544")
+		(property "Reference" "D17"
+			(at 159.512 90.2716 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 159.512 92.583 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 161.925 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 157.48 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 157.48 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a4d6ad5b-11ed-4300-ab4d-26c79fabfbe6")
+		)
+		(pin "2"
+			(uuid "f58c5d66-af3c-4a2e-aa29-e4b6a59fda37")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 132.08 74.93 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "af21b7c9-af22-4427-8551-0a9093cc6de0")
+		(property "Reference" "D12"
+			(at 134.112 73.7616 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 134.112 76.073 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 136.525 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 132.08 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5cfb5b3b-ef6a-44f2-9071-76790e2b9ed8")
+		)
+		(pin "2"
+			(uuid "e1703189-c788-433f-b837-bfdbaab13845")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 73.66 87.63 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b2103f59-dd4d-41e9-8d56-f28b7117381c")
+		(property "Reference" "SW13"
+			(at 73.66 81.153 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 73.66 83.4644 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 73.66 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 73.66 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f52f0397-391a-4ef1-8025-37784870561c")
+		)
+		(pin "2"
+			(uuid "b810a047-9ee4-4f6b-bd2a-d408a0d3be7a")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 81.28 58.42 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b58d9523-4a75-49bc-98ad-dc19a7da7f94")
+		(property "Reference" "D6"
+			(at 83.312 57.2516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 83.312 59.563 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 85.725 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 81.28 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e2e1fe81-06ea-4603-a067-e464971d0975")
+		)
+		(pin "2"
+			(uuid "ab1c101d-1a5a-4ec1-a2e9-58163b78d52c")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 157.48 41.91 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b6dd5484-b827-41f7-872b-7b070cc02d2a")
+		(property "Reference" "D5"
+			(at 159.512 40.7416 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 159.512 43.053 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 161.925 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 157.48 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 157.48 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f8c08497-657b-4368-8849-54391d883314")
+		)
+		(pin "2"
+			(uuid "df2ed4b1-289d-4036-9cf9-3e5b52d59dac")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 81.28 91.44 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b73fe739-0677-48c5-baf4-10d2f97b01fb")
+		(property "Reference" "D14"
+			(at 83.312 90.2716 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 83.312 92.583 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 85.725 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 81.28 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 81.28 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1682fc76-3615-41e9-9236-71045cacba15")
+		)
+		(pin "2"
+			(uuid "8b8247eb-4504-485a-a3d5-37513afd253e")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 73.66 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b78916b2-225e-4c9c-a515-7b9d8c451d36")
+		(property "Reference" "SW5"
+			(at 73.66 48.133 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 73.66 50.4444 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 73.66 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 73.66 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 73.66 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "ce812b70-a648-43e4-891f-d12c5a241a17")
+		)
+		(pin "2"
+			(uuid "ad61d063-f19c-4349-9e7d-a1c502dcc704")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 132.08 58.42 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c2a0149f-d60c-4cab-9cfa-406e58a008b7")
+		(property "Reference" "D8"
+			(at 134.112 57.2516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 134.112 59.563 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 136.525 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 132.08 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 132.08 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f218c94c-df20-4f22-b5a5-b2bc658eca0e")
+		)
+		(pin "2"
+			(uuid "8887de19-fae3-4018-af18-bbf1b44e3eeb")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 99.06 71.12 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c2e5056c-1c38-4089-92d3-613718b7ead5")
+		(property "Reference" "SW10"
+			(at 99.06 64.643 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 99.06 66.9544 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 99.06 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "62fe6d13-786e-41a3-a68b-1c6d22fc94d2")
+		)
+		(pin "2"
+			(uuid "c5f3a8dc-f1d9-4419-83a5-01d39b0fa9f6")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 99.06 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ce1fdc57-0045-4d0c-8a2d-b57ee2831996")
+		(property "Reference" "SW6"
+			(at 99.06 48.133 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 99.06 50.4444 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 99.06 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "44fa5765-3393-492e-ae84-e7860fed729e")
+		)
+		(pin "2"
+			(uuid "fd043d52-3fc2-4e42-be9e-f0eb0b11ea72")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 149.86 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e378ca2b-e4bf-4dae-b6c7-7e6d3c05c570")
+		(property "Reference" "SW4"
+			(at 149.86 31.623 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 149.86 33.9344 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 149.86 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "744576af-ed6e-4da8-8015-ad6039e1eb2f")
+		)
+		(pin "2"
+			(uuid "2de9ce6a-fa7f-4c15-9454-17d43333cff2")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 149.86 54.61 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "ee9d2237-f97a-45fb-9012-6cb4a63bcad9")
+		(property "Reference" "SW8"
+			(at 149.86 48.133 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 149.86 50.4444 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 149.86 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 149.86 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0606f188-270a-4e90-b355-a6b154d02cf2")
+		)
+		(pin "2"
+			(uuid "cc73abf9-710f-4083-bbb1-ebcc350385cb")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 106.68 58.42 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f0d0cc54-8604-4846-a1dc-5af41e23d7c2")
+		(property "Reference" "D7"
+			(at 108.712 57.2516 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 108.712 59.563 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 111.125 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 106.68 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f43e7e35-389a-4ee1-b799-e7450e542925")
+		)
+		(pin "2"
+			(uuid "5363cd83-4aa6-4b9e-9ad8-635cd7b8d98b")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "_reviung-kbd:SW_PUSH")
+		(at 99.06 38.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f3a2728b-8aa7-47e3-9608-b95218422fd6")
+		(property "Reference" "SW2"
+			(at 99.06 31.623 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_PUSH"
+			(at 99.06 33.9344 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" "mkl:SW_choc12_hotswap"
+			(at 99.06 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "c4ec41d1-5598-4e16-8a3f-e796b586a3c3")
+		)
+		(pin "2"
+			(uuid "9eda6f69-7ea5-49e0-b424-054866e2c1c5")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Diode:1N4148W")
+		(at 106.68 74.93 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f68354bc-9e6e-47f6-ab2c-2c073aa082ba")
+		(property "Reference" "D11"
+			(at 108.712 73.7616 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "1N4148W"
+			(at 108.712 76.073 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "mkl:D_SOD-323_1side"
+			(at 111.125 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/85748/1n4148w.pdf"
+			(at 106.68 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 106.68 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "7c9325af-0c4a-488d-ba5a-c47a8637c812")
+		)
+		(pin "2"
+			(uuid "08c1d8a6-5eb8-4f62-8171-bb2185a1ece5")
+		)
+		(instances
+			(project "stepateno"
+				(path "/60a67a90-5285-4a42-ad6e-b0de663440c9/211377c4-7a68-4b3d-8933-7557d5ecb77b"
+					(reference "D11")
+					(unit 1)
+				)
+			)
+		)
+	)
+)

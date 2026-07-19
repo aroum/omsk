@@ -1,5 +1,8 @@
 # Case
 
+![front](pics/front.png)
+![back](pics/back.png)
+
 ## BOM
 
 | Item # | Description                     | Specification / Standard        | Qty | Unit | Notes                   |
