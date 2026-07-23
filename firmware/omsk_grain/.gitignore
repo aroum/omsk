@@ -1,0 +1,7 @@
+/__pycache__
+.DS_Store
+/build_rp2040
+/build_rp2350
+*.wav
+/audio2h/converted
+src/tables/audio_data.h

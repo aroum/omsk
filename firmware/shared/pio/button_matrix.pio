@@ -1,0 +1,31 @@
+.program button_matrix
+
+start:
+    set pins 1 [31]
+    in pins 4
+    set pins 2 [31]
+    in pins 4
+    set pins 4 [31]
+    in pins 4
+    set pins 8 [31]
+    in pins 4
+    push noblock
+    jmp start
+
+% c-sdk {
+static inline void button_matrix_program_init(PIO pio, uint sm, uint offset, uint col_base, uint row_base, float clk_div) {
+    pio_sm_config c = button_matrix_program_get_default_config(offset);
+    sm_config_set_set_pins(&c, col_base, 4);
+    sm_config_set_in_pins(&c, row_base);
+    sm_config_set_in_shift(&c, false, false, 0);
+    sm_config_set_clkdiv(&c, clk_div);
+    for (int i = 0; i < 4; i++) {
+        pio_gpio_init(pio, col_base + i);
+        pio_gpio_init(pio, row_base + i);
+    }
+    pio_sm_set_consecutive_pindirs(pio, sm, col_base, 4, true);
+    pio_sm_set_consecutive_pindirs(pio, sm, row_base, 4, false);
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+%}

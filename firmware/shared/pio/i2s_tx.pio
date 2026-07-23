@@ -1,0 +1,54 @@
+.program i2s_tx
+.side_set 2 ; Pin 0 = BCK, Pin 1 = LRCK
+
+; Standard I2S: MSB is delayed by 1 BCK cycle after LRCK transition.
+; LRCK = 0 for Left, LRCK = 1 for Right.
+
+public entry_point:
+.wrap_target
+    set x, 14            side 0b11 [1] ; Right channel ends, LRCK was 1. BCK=1.
+    
+    ; Transition to Left channel (LRCK: 1 -> 0)
+    nop                  side 0b00 [1] ; LRCK=0, BCK=0. Delay cycle.
+    
+    ; Left Channel Data (16 bits)
+left_loop:
+    out pins, 1          side 0b01 [1] ; BCK=1, shift out bit
+    jmp x-- left_loop    side 0b00 [1] ; BCK=0
+    
+    out pins, 1          side 0b01 [1] ; Last bit of Left
+    set x, 14            side 0b10 [1] ; Transition to Right (LRCK: 0 -> 1), BCK=0. Delay cycle.
+    
+    ; Right Channel Data (16 bits)
+right_loop:
+    out pins, 1          side 0b11 [1] ; BCK=1, shift out bit
+    jmp x-- right_loop   side 0b10 [1] ; BCK=0
+    
+    out pins, 1          side 0b11 [1] ; Last bit of Right
+.wrap
+
+% c-sdk {
+static inline void i2s_tx_program_init(PIO pio, uint sm, uint offset, uint data_pin, uint bck_pin, float sample_rate) {
+    uint lrck_pin = bck_pin + 1;
+
+    pio_gpio_init(pio, data_pin);
+    pio_gpio_init(pio, bck_pin);
+    pio_gpio_init(pio, lrck_pin);
+
+    pio_sm_set_consecutive_pindirs(pio, sm, data_pin, 1, true);
+    pio_sm_set_consecutive_pindirs(pio, sm, bck_pin, 2, true);
+
+    pio_sm_config c = i2s_tx_program_get_default_config(offset);
+    sm_config_set_out_pins(&c, data_pin, 1);
+    sm_config_set_sideset_pins(&c, bck_pin);
+
+    sm_config_set_out_shift(&c, false, true, 32);
+    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_TX);
+
+    float div = (float)clock_get_hz(clk_sys) / (sample_rate * 2.0f * 16.0f * 4.0f);
+    sm_config_set_clkdiv(&c, div);
+
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+%}
