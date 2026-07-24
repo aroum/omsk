@@ -31,7 +31,8 @@ _autosave-*
 /dac/production/backups
 sw/build_log.txt
 /nizamy
-**/build*
+**/build*/
+!*.sh
 /nizkore
 **/__pycache__
 *.uf2

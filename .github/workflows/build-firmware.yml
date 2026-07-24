@@ -1,0 +1,54 @@
+name: Build Firmware
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Firmware Binaries
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        firmware: [omsk_fm, omsk_wave, omsk_grain, omsk_midi, omsk_tracker, omsk_oled_test]
+        platform: [rp2040, rp2350]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+        with:
+          submodules: recursive
+
+      - name: Install ARM Toolchain and Ninja
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential cmake ninja-build
+
+      - name: Set Board Environment
+        run: |
+          if [ "${{ matrix.platform }}" = "rp2040" ]; then
+            echo "PICO_BOARD=pico" >> $GITHUB_ENV
+          else
+            echo "PICO_BOARD=pico2" >> $GITHUB_ENV
+          fi
+
+      - name: Build ${{ matrix.firmware }} (${{ matrix.platform }})
+        run: |
+          cd firmware/${{ matrix.firmware }}
+          mkdir -p build
+          cd build
+          cmake -G Ninja -DPICO_PLATFORM=${{ matrix.platform }} -DPICO_BOARD=${{ env.PICO_BOARD }} ..
+          ninja
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.firmware }}_${{ matrix.platform }}
+          path: |
+            firmware/${{ matrix.firmware }}/build/*.uf2
+            firmware/${{ matrix.firmware }}/build/*.bin
+            firmware/${{ matrix.firmware }}/build/*.elf
