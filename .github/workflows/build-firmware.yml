@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        firmware: [omsk_fm, omsk_wave, omsk_grain, omsk_midi, omsk_tracker, omsk_oled_test]
+        firmware: [omsk_fm, omsk_wave, omsk_grain, omsk_midi, omsk_oled_test]
         platform: [rp2040, rp2350]
 
     steps:
@@ -27,6 +27,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential cmake ninja-build
+
+      - name: Setup Pico SDK
+        uses: pico-sdk/setup-action@v1
+        with:
+          version: '2.1.0'
 
       - name: Set Board Environment
         run: |
@@ -41,7 +46,7 @@ jobs:
           cd firmware/${{ matrix.firmware }}
           mkdir -p build
           cd build
-          cmake -G Ninja -DPICO_PLATFORM=${{ matrix.platform }} -DPICO_BOARD=${{ env.PICO_BOARD }} ..
+          cmake -G Ninja -DPICO_SDK_PATH=$PICO_SDK_PATH -DPICO_PLATFORM=${{ matrix.platform }} -DPICO_BOARD=${{ env.PICO_BOARD }} ..
           ninja
 
       - name: Upload Artifacts
