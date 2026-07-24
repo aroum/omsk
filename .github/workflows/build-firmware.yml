@@ -23,18 +23,22 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install ARM Toolchain and Ninja
+      - name: Install ARM Toolchain and Dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential cmake ninja-build
 
-      - name: Setup Pico SDK
-        uses: pico-sdk/setup-action@v1
+      - name: Checkout Pico SDK
+        uses: actions/checkout@v7
         with:
-          version: '2.1.0'
+          repository: raspberrypi/pico-sdk
+          ref: 2.1.0
+          path: pico-sdk
+          submodules: recursive
 
-      - name: Set Board Environment
+      - name: Set Board & SDK Environment
         run: |
+          echo "PICO_SDK_PATH=${{ github.workspace }}/pico-sdk" >> $GITHUB_ENV
           if [ "${{ matrix.platform }}" = "rp2040" ]; then
             echo "PICO_BOARD=pico" >> $GITHUB_ENV
           else
@@ -46,7 +50,7 @@ jobs:
           cd firmware/${{ matrix.firmware }}
           mkdir -p build
           cd build
-          cmake -G Ninja -DPICO_SDK_PATH=$PICO_SDK_PATH -DPICO_PLATFORM=${{ matrix.platform }} -DPICO_BOARD=${{ env.PICO_BOARD }} ..
+          cmake -G Ninja -DPICO_PLATFORM=${{ matrix.platform }} -DPICO_BOARD=${{ env.PICO_BOARD }} ..
           ninja
 
       - name: Upload Artifacts
