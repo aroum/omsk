@@ -16,6 +16,9 @@ jobs:
       matrix:
         firmware: [omsk_fm, omsk_wave, omsk_grain, omsk_midi, omsk_oled_test]
         platform: [rp2040, rp2350]
+        exclude:
+          - firmware: omsk_wave
+            platform: rp2040
 
     steps:
       - name: Checkout Repository
