@@ -4,7 +4,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../sw_config.h"
+#if __has_include("../tables/audio_data.h")
 #include "../tables/audio_data.h"
+#else
+#include "../tables/audio_data_stub.h"
+#endif
 #include "../tables/eg_lut.h"
 #include "fast_math.h"
 
