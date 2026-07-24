@@ -33,6 +33,9 @@ Rather than compiling a single monolithic application, OMSK uses separate firmwa
 
 All firmware targets share a unified low-level core library located in [firmware/shared](firmware/shared), but compile as independent binaries.
 
+> [!NOTE]
+> Each firmware folder contains its own documentation and parameter reference: see the respective `README.md` (e.g., [omsk_fm/README.md](firmware/omsk_fm/README.md)) and the `docs/` directory for detailed configuration options (e.g., [omsk_fm/docs](firmware/omsk_fm/docs)). Shared hardware pinouts and peripheral configurations are defined in [firmware/shared/hw_config.h](firmware/shared/hw_config.h) (see [firmware/shared/README.md](firmware/shared/README.md)).
+
 ### Firmwares
 
 Explore the firmware directory at [firmware](firmware) to flash any of the following targets:
