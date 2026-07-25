@@ -21,7 +21,7 @@
 #include "leds/leds.h"
 #include "midi/midi_map.h"
 #include "midi_helpers.h"
-#include "tables/audio_data.h"
+#include "tables/audio_data_wrapper.h"
 #include "matrix.h"
 #include "encoders.h"
 

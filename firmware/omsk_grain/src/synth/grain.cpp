@@ -1,6 +1,6 @@
 #include "grain.h"
 #include "grain_env.h"
-#include "../tables/audio_data.h"
+#include "../tables/audio_data_wrapper.h"
 #include <math.h>
 
 Grain::Grain() : active(false) {}

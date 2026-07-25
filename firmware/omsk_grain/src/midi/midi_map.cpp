@@ -1,6 +1,6 @@
 #include "midi_map.h"
 #include "../synth/audio_engine.h"
-#include "../tables/audio_data.h"
+#include "../tables/audio_data_wrapper.h"
 #include <math.h>
 
 // Parameter step sizes (per one encoder click)

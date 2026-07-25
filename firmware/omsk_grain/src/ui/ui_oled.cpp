@@ -5,7 +5,7 @@
 #include "pico/time.h"
 #include "../sw_config.h"
 #include "../../../shared/image_logo.h"
-#include "../tables/audio_data.h"
+#include "../tables/audio_data_wrapper.h"
 #include "../synth/grain_env.h"
 
 // ---- OLED is 128x64 px ---- //
