@@ -54,17 +54,43 @@ export PICO_SDK_PATH=/path/to/pico-sdk
 
 ---
 
-## Building
+## Memory & Binary Formats (`.uf2` vs `.bin` / `.elf`)
 
-Each firmware folder contains its own dedicated build script (`build_all.sh` or `build.sh`) supporting arguments for cleaning, memory analysis, platform selection (`rp2040` / `rp2350`), and flashing via `picotool`.
+To synthesize high-quality audio, this project relies heavily on pre-calculated Look-Up Tables (LUTs), audio samples, and wavetables stored directly in Flash memory. As synth engines evolved (e.g. granular synthesis with PCM sample data), Flash memory space on the RP2350 Zero (4 MB limit, non-expandable due to compact QFN packaging and pin count constraints) became scarce.
 
-### Building Individual Firmware
+Standard `.uf2` files add significant block header overhead (nearly doubling the file size compared to raw binaries). By switching from drag-and-drop `.uf2` flashing to flashing raw `.bin` or `.elf` binaries directly via [`picotool`](https://github.com/raspberrypi/picotool), **~1.4 MB of Flash space is freed up**, allowing almost **twice as many audio samples, LUTs, and wavetables** to fit into internal storage.
 
-Navigate to the project directory and run the build script:
+---
+
+## Flashing & Tools
+
+### Installing `picotool`
+
+`picotool` allows flashing `.bin` and `.elf` binaries directly over USB without requiring drag-and-drop or external HW debuggers.
+
+#### macOS
+```bash
+brew install picotool
+```
+
+#### Ubuntu / Debian
+```bash
+sudo apt install picotool
+```
+
+---
+
+## Building & Flashing
+
+Each firmware folder contains its own dedicated build script (`build_all.sh`) supporting clean builds, memory analysis, platform selection (`rp2040` / `rp2350`), and automated flashing via `picotool`.
+
+### Option 1: Flashing via `build_all.sh` (Recommended)
+
+Run the script with the `-f` (or `--flash`) flag. The script will automatically trigger a soft reboot to BOOTSEL mode via USB CDC (1200 baud) and upload the `.bin` binary:
 
 ```bash
 cd firmware/omsk_wave
-./build_all.sh -p rp2350 -c -s
+./build_all.sh -p rp2350 -c -s -f
 ```
 
 #### Script Flags & Options:
@@ -73,15 +99,30 @@ cd firmware/omsk_wave
 - `-p <platform>`: Target MCU platform (`rp2040` or `rp2350`, default is `rp2350`).
 - `-f`, `--flash`: Flash binary directly to connected device using `picotool`.
 
-### Examples
+### Option 2: Flashing Manually via `picotool`
 
-Build **`omsk_wave`** for RP2350 with clean build and memory analysis:
+1. Connect your RP2040 / RP2350 board in **BOOTSEL mode** (hold the `BOOT` button while plugging in USB, or press `RESET` while holding `BOOT`).
+2. Flash the binary file (`.bin` or `.elf`) and automatically execute/reboot:
+
 ```bash
-cd firmware/omsk_wave
-./build_all.sh -p rp2350 -c -s
+# Flash .bin file and execute
+picotool load build_rp2350/omsk_wave.bin -u
+
+# Or flash .elf file directly
+picotool load build_rp2350/omsk_wave.elf -u
 ```
 
-Build **`omsk_fm`** for RP2040 and flash to hardware:
+---
+
+### Build & Flash Examples
+
+Build **`omsk_wave`** for RP2350 and flash to hardware:
+```bash
+cd firmware/omsk_wave
+./build_all.sh -p rp2350 -c -s -f
+```
+
+Build **`omsk_fm`** for RP2040 and flash:
 ```bash
 cd firmware/omsk_fm
 ./build_all.sh -p rp2040 -s -f
