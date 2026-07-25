@@ -3,8 +3,12 @@ name: Build Firmware
 on:
   push:
     branches: [ main, master ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ main, master ]
+  release:
+    types: [published]
   workflow_dispatch:
 
 jobs:
@@ -93,3 +97,48 @@ jobs:
             firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}.uf2
             firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}.bin
             firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}.elf
+
+  release:
+    name: Create & Publish Release Assets
+    needs: build
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'release'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v7
+
+      - name: Download All Firmware Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release_assets/firmware
+
+      - name: Prepare Release Package
+        run: |
+          mkdir -p dist
+
+          # 1. Copy all compiled firmware binaries (.uf2, .bin)
+          find release_assets/firmware -type f \( -name "*.uf2" -o -name "*.bin" \) -exec cp {} dist/ \;
+
+          # 2. Package hardware/case into case.zip
+          if [ -d "hardware/case" ]; then
+            cd hardware/case
+            zip -r ../../dist/case.zip .
+            cd ../..
+          fi
+
+          # 3. Locate Gerber zip in hardware/pcb/ or pack hardware/pcb files
+          GERBER_ZIP=$(find hardware/pcb -maxdepth 1 -iname "*gerber*.zip" | head -n 1)
+          if [ -n "$GERBER_ZIP" ]; then
+            cp "$GERBER_ZIP" dist/
+          else
+            cd hardware/pcb
+            zip -r ../../dist/omsk-pcb-gerber.zip .
+            cd ../..
+          fi
+
+      - name: Publish Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
