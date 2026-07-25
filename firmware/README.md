@@ -13,7 +13,27 @@ This repository contains the firmware source code for the OMSK hardware platform
 
 ---
 
-## Prerequisites & Submodules Initialization
+## Prerequisites & Dependencies
+
+### System Dependencies
+
+To compile firmware for RP2040 / RP2350, you need the ARM GCC toolchain along with the C standard library (`newlib`), CMake, and build tools.
+
+#### macOS (Homebrew)
+> [!IMPORTANT]
+> Make sure to install `arm-none-eabi-newlib`. Without it, GCC will fail with `stdint.h: No such file or directory` error when compiling C standard headers.
+
+```bash
+brew install cmake ninja arm-none-eabi-binutils arm-none-eabi-gcc arm-none-eabi-newlib
+```
+
+#### Ubuntu / Debian
+```bash
+sudo apt update
+sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
+```
+
+### Submodules & Pico SDK
 
 Before building any firmware, ensure the repository submodules (such as TinyUSB, u8g2, CMSIS-DSP, etc.) are fully initialized.
 

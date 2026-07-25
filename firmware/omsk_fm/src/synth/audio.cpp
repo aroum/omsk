@@ -10,6 +10,42 @@
 #include "fm_synth.h"
 #include "synth.h"
 
+#if CFG_ENABLE_DAC
+
+#include "hardware/pio.h"
+#include "i2s_tx.pio.h"
+
+static PIO audio_pio = pio0;
+static uint audio_sm_i2s;
+
+void audio_core_entry(void) {
+  multicore_lockout_victim_init();
+  int16_t render_buf[32];
+  while (1) {
+    fm_synth_render_block(render_buf, 32);
+    for (int i = 0; i < 32; i++) {
+      int16_t sample = (int16_t)((int32_t)render_buf[i] * CFG_MASTER_VOLUME_PERCENT / 100);
+      uint32_t packed = ((uint32_t)(uint16_t)sample << 16) | (uint16_t)sample;
+      pio_sm_put_blocking(audio_pio, audio_sm_i2s, packed);
+    }
+  }
+}
+
+void audio_init(void) {
+  uint offset = pio_add_program(audio_pio, &i2s_tx_program);
+  audio_sm_i2s = pio_claim_unused_sm(audio_pio, true);
+  i2s_tx_program_init(audio_pio, audio_sm_i2s, offset, PIN_DAC_I2S_DATA,
+                      PIN_DAC_I2S_BCK, AUDIO_SAMPLE_RATE);
+
+  synth_init();
+}
+
+void audio_start(void) {
+  multicore_launch_core1(audio_core_entry);
+}
+
+#else
+
 static uint pwm_slice;
 #if CFG_ENABLE_BETTER_PWM
 static volatile uint16_t pwm_current = 512;
@@ -115,3 +151,5 @@ void audio_init(void) {
 void audio_start(void) {
   multicore_launch_core1(audio_core_entry);
 }
+
+#endif
