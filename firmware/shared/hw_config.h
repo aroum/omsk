@@ -50,7 +50,9 @@
 // DISPLAY TYPE SELECTION
 // 0 = SSD1312 128x64 (Standard horizontal screen)
 // 1 = SH1107 64x128 (Turtle vertical screen)
-#define CFG_OLED_TYPE 1
+#ifndef CFG_OLED_TYPE
+#define CFG_OLED_TYPE 0
+#endif
 
 #define PIN_OLED_SCL 21
 #define PIN_OLED_SDA 20 

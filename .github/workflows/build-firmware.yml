@@ -21,6 +21,7 @@ jobs:
         firmware: [omsk_fm, omsk_wave, omsk_grain, omsk_midi, omsk_oled_test]
         platform: [rp2040, rp2350]
         audio: [pwm, dac]
+        display: [ssd1312, sh1107]
         exclude:
           - firmware: omsk_wave
             platform: rp2040
@@ -57,32 +58,38 @@ jobs:
             echo "PICO_BOARD=pico2" >> $GITHUB_ENV
           fi
 
-      - name: Build ${{ matrix.firmware }} (${{ matrix.platform }}, ${{ matrix.audio }})
+      - name: Build ${{ matrix.firmware }} (${{ matrix.platform }}, ${{ matrix.audio }}, ${{ matrix.display }})
         run: |
           cd firmware/${{ matrix.firmware }}
           mkdir -p build
           cd build
 
           EXTRA_FLAGS=""
+          if [ "${{ matrix.display }}" = "sh1107" ]; then
+            EXTRA_FLAGS="-DCFG_OLED_TYPE=1"
+          else
+            EXTRA_FLAGS="-DCFG_OLED_TYPE=0"
+          fi
+
           if [ "${{ matrix.firmware }}" = "omsk_grain" ]; then
             if [ "${{ matrix.audio }}" = "dac" ]; then
-              EXTRA_FLAGS="-DAUDIO_OUT_DAC=1"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DAUDIO_OUT_DAC=1"
             else
-              EXTRA_FLAGS="-DAUDIO_OUT_PWM=1"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DAUDIO_OUT_PWM=1"
             fi
           elif [ "${{ matrix.firmware }}" = "omsk_fm" ] || [ "${{ matrix.firmware }}" = "omsk_wave" ]; then
             if [ "${{ matrix.audio }}" = "dac" ]; then
-              EXTRA_FLAGS="-DCFG_ENABLE_DAC=1 -DCFG_ENABLE_PWM8_AUDIO=0"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DCFG_ENABLE_DAC=1 -DCFG_ENABLE_PWM8_AUDIO=0"
             else
-              EXTRA_FLAGS="-DCFG_ENABLE_DAC=0 -DCFG_ENABLE_PWM8_AUDIO=1"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DCFG_ENABLE_DAC=0 -DCFG_ENABLE_PWM8_AUDIO=1"
             fi
           fi
 
           cmake -G Ninja -DPICO_PLATFORM=${{ matrix.platform }} -DPICO_BOARD=${{ env.PICO_BOARD }} $EXTRA_FLAGS ..
           ninja
 
-          # Rename binaries to include audio output source name
-          SUFFIX="${{ matrix.platform }}_${{ matrix.audio }}"
+          # Rename binaries to include audio output source and display name
+          SUFFIX="${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}"
           for ext in uf2 bin elf; do
             if [ -f "${{ matrix.firmware }}.${ext}" ]; then
               cp "${{ matrix.firmware }}.${ext}" "${{ matrix.firmware }}_${SUFFIX}.${ext}"
@@ -92,11 +99,11 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.firmware }}_${{ matrix.platform }}_${{ matrix.audio }}
+          name: ${{ matrix.firmware }}_${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}
           path: |
-            firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}.uf2
-            firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}.bin
-            firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}.elf
+            firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}.uf2
+            firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}.bin
+            firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}.elf
 
   release:
     name: Create & Publish Release Assets
