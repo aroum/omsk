@@ -2,6 +2,8 @@
 
 This project is a granular synthesizer with a 128x64 OLED display interface.
 
+> **Acknowledgements & Inspiration:** Special thanks to the [pikocore](https://github.com/schollz/pikocore) project by schollz. It served as a great inspiration for this firmware, and its audio conversion workflows (converting audio files into C header files) were immensely helpful during development.
+
 Samples are embedded into the firmware. They are pre-converted to mono and downsampled. Configurable parameters should be available in the config (bit depth, sampling rate).
 
 ## Buttons Layout

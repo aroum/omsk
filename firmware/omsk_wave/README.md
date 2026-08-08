@@ -1,3 +1,7 @@
+# OMSK Wave Synthesizer
+
+> **Note:** Initially, this firmware started as a fork of [digital-synth-pra32-u2](https://github.com/risgk/digital-synth-pra32-u2). Very little of the original engine remains today, but it was immensely helpful during early development.
+
 # Synthesizer Architecture Diagram
 
 Below is the signal flow and modulation routing diagram for the 4-voice polyphonic synthesizer.
@@ -445,7 +449,8 @@ Key tracking allows the note played on the keyboard to influence the cutoff freq
 ##### Filter Type
 
 * **Cutoff:** Range 20 Hz — 20,000 Hz.
-* 2nd order filter (12 dB/oct). Several filter types supported in config (PRA32, SVF, Moog Ladder), see [Firmware Config](docs/config.md).
+* 2nd order filter (12 dB/oct). Several filter types supported in config (PRA32
+* , SVF, Moog Ladder), see [Firmware Config](docs/config.md).
 * **Key Tracking (±100%):** $F_{actual} = F_{cutoff} + (Note - 60) \times Tracking$. Cutoff calculation via LUT (no `pow()`).
 * **Resonance:** With gain compensation to preserve volume.
 
