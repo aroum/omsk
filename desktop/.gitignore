@@ -1,0 +1,17 @@
+# Python environment & cache
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.python-version
+
+# Compiled shared libraries and build artifacts
+*.so
+*.dylib
+*.dll
+synth_tools/bin/*.so
+synth_tools/bin/*.dylib
+synth_tools/bin/*.dll
+synth_tools/build/

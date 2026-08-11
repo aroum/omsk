@@ -1,0 +1,100 @@
+{
+    "params": {
+        "VCO1": {
+            "transpose": 0.5364140624999965,
+            "detune": 0.5,
+            "wave": 0.39419010416666656,
+            "shape": 1.0
+        },
+        "VCO2": {
+            "transpose": 0.42109375,
+            "detune": 0.5,
+            "wave": 0.9601354166666661,
+            "shape": 0.7588515625000014
+        },
+        "VCF1": {
+            "cutoff": 0.8980625000000014,
+            "resonance": 0.7545624999999998,
+            "vcf_type": 0.010109374999999804,
+            "mix": 1.0
+        },
+        "VCF2": {
+            "cutoff": 0.7026328125000002,
+            "resonance": 0.5989843750000005,
+            "vcf_type": 0.9263750000000004,
+            "mix": 1.0
+        },
+        "LFO1": {
+            "rate": 0.10423437499999978,
+            "smooth": 0.00465625,
+            "wave": 0.806377604166668,
+            "shape": 1.0
+        },
+        "LFO2": {
+            "rate": 0.053226562500000005,
+            "smooth": 0.0,
+            "wave": 0.0,
+            "shape": 0.09542968750000007
+        },
+        "EG1": {
+            "attack": 0.1,
+            "decay": 0.3,
+            "sustain": 0.5,
+            "release": 0.5
+        },
+        "EG2": {
+            "attack": 0.1,
+            "decay": 0.3,
+            "sustain": 0.5,
+            "release": 0.5
+        },
+        "MIXER": {
+            "vco1_vol": 0.5,
+            "vco2_vol": 0.7,
+            "phase2": 0.0,
+            "noise_vol": 0.0
+        },
+        "NOISE": {
+            "color": 0.5,
+            "unused1": 0.0,
+            "p3": 0.0,
+            "p4": 0.0
+        },
+        "FX": {
+            "time": 0.0,
+            "feedback": 0.0,
+            "mix": 0.0,
+            "tone": 0.5
+        },
+        "ARP": {
+            "rate": 0.5,
+            "mode": 0.557984375,
+            "swing": 0.5819296875,
+            "oct_range": 0.0,
+            "variation": 0.0
+        },
+        "MOD": {
+            "mode1": 0.7412656249999959,
+            "depth1": 1.0,
+            "mode2": 0.0,
+            "depth2": 0.0
+        },
+        "GLIDE": {
+            "polyphony": 1.0,
+            "time": 0.15153906250000002,
+            "slope": 0.37948437500000004,
+            "mode": 0.7413046875
+        }
+    },
+    "mod_assignments": {
+        "('VCF1', 'cutoff')": [
+            "LFO1",
+            0.13546093749999963
+        ]
+    },
+    "signal_routing": {
+        "VCO1": "VCF1",
+        "VCO2": null,
+        "NOISE": "VCF2"
+    }
+}

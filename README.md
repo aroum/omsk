@@ -50,9 +50,27 @@ Explore the firmware directory at [firmware](firmware) to flash any of the follo
 
 Both synth engines support full MIDI CC mapping and preset saving directly to the onboard non-volatile memory.
 
+## Desktop Simulators & Tools
+
+The [`desktop`](desktop) directory contains Python-based software simulators, hardware emulators, and firmware development utilities managed via [`uv`](https://github.com/astral-sh/uv):
+
+* **[`desktop/grain_simulator`](desktop/grain_simulator):** PySide6 GUI simulation of the OMSK Granular Synth engine (`omsk_grain`).
+* **[`desktop/synth_simulator`](desktop/synth_simulator):** PySide6 GUI simulation of the OMSK Analog/Wavetable Synth engine (`omsk_synth`).
+* **[`desktop/synth_tools`](desktop/synth_tools):** Firmware LUT header generators, hardware emulators (128x64 OLED display, 4x4 matrix keypad), and interactive web testbenches.
+
+Quick launch:
+```bash
+cd desktop
+uv sync
+uv run synth_simulator/main.py
+```
+
+For more details, see the [Desktop README](desktop/README.md).
+
 ## Roadmap & Status
 
 This project is currently a work in progress.
 
 * **Hardware:** Case and knob designs are being actively iterated.
 * **Software:** A dedicated web-based editor using WebMIDI is planned to allow quick parameter tweaking, firmware updates, and preset backup/sharing.
+
