@@ -15,7 +15,8 @@ $$g[i] = \sqrt{\frac{i}{127}}$$
 
 Single voice mix formula:
 $$V_{voice} = \frac{g_1 \cdot VCO_1 + g_2 \cdot VCO_2 + g_3 \cdot Noise}{\sqrt{g_1^2 + g_2^2 + g_3^2} + \epsilon}$$
-*Where $\epsilon = 10^{-9}$ is a small value to prevent division by zero.*
+
+_Where $\epsilon = 10^{-9}$ is a small value to prevent division by zero._
 
 ---
 
@@ -24,11 +25,14 @@ $$V_{voice} = \frac{g_1 \cdot VCO_1 + g_2 \cdot VCO_2 + g_3 \cdot Noise}{\sqrt{g
 When playing chords (up to 4 voices simultaneously), each voice has its own **Velocity** level. To prevent digital overload (clipping), summing is performed with normalization based on the square root of the sum of powers.
 
 #### Velocity Weighting
+
 For each voice $n$, a weight $W_n$ is calculated based on key velocity:
 $$W_n = \sqrt{\frac{Velocity_n}{127}}$$
 
 #### Final Summing Algorithm
+
 Let $S_n$ be the final signal of voice $n$ (after mixer, filter, and VCA envelope).
+
 1. **Signal Summing:** Sum all signals multiplied by their individual Velocity weight:
    $$Sum = \sum_{n=1}^{4} (S_n \cdot W_n)$$
 
@@ -39,6 +43,7 @@ Let $S_n$ be the final signal of voice $n$ (after mixer, filter, and VCA envelop
    $$Out = \frac{Sum}{Norm}$$
 
 #### Pseudocode Implementation Example
+
 ```c
 // Calculate weights for each voice (typically on note press)
 float w[4];
@@ -68,28 +73,34 @@ float output = voice_sum / (sqrt(power_sum) + 1e-9f);
 Any parameter (knob) supports assignment of one of the sources: LFO1, LFO2, EG1, EG2, ModWh. Modulation depth $D$ is specified in range $[-1.0; +1.0]$ ($-100\%$ to $+100\%$).
 
 ### Data Separation
+
 - $K$: Base user-set value (UI). Not altered by modulation.
 - $K_{mod}$: Final value for DSP, clamped to range $[K_{min}; K_{max}]$.
 
 ### Signal Preparation (Normalization)
+
 All incoming signals $S_{raw}$ are converted to a unified unipolar representation $M \in [0; 1]$.
 
-| Source    | Original Range   | Transformation to $M$   | Note                             |
-| --------- | ---------------- | ----------------------- | -------------------------------- |
-| **LFO**   | $[-1; +1]$        | $M = (S_{raw} + 1) / 2$ | Shift up and halve               |
-| **EG**    | $[0; 1]$          | $M = S_{raw}$           | Already unipolar                 |
-| **ModWh** | $[0; 127]$        | $M = S_{raw} / 127$     | Normalized to $[0; 1]$           |
+| Source    | Original Range | Transformation to $M$   | Note                   |
+| --------- | -------------- | ----------------------- | ---------------------- |
+| **LFO**   | $[-1; +1]$     | $M = (S_{raw} + 1) / 2$ | Shift up and halve     |
+| **EG**    | $[0; 1]$       | $M = S_{raw}$           | Already unipolar       |
+| **ModWh** | $[0; 127]$     | $M = S_{raw} / 127$     | Normalized to $[0; 1]$ |
 
 ### Offset Calculation ($\Delta K$)
+
 The signal always moves either strictly "upwards" or "downwards" relative to $K$:
+
 - $U = K_{max} - K$ (headroom up)
 - $Down = K - K_{min}$ (headroom down)
 
 **Offset Formula:**
+
 - If $D \ge 0$: $\Delta K = M \cdot D \cdot U$
 - If $D < 0$: $\Delta K = M \cdot D \cdot Down$
 
 ### Calculation Pseudocode
+
 ```c
 // Executed when K changes (user knob adjustment)
 float U = K_max - K;

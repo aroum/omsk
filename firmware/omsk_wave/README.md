@@ -109,9 +109,9 @@ Two LEDs located between encoders (LED 3 and 4) indicate system status. In seque
 
 16 LEDs located under physical matrix pads change behavior depending on current operation mode:
 
-* **In PIANO mode**, they highlight keyboard structure (white/black keys) and octave transpose/arpeggiator state. See [PIANO Mode LED Indication](#piano-mode-led-indication).
-* **In PARAMS mode**, they display active synth modules and current routing. See [PARAMS Mode Module LED Indication](#params-mode-module-led-indication).
-* **In SEQ mode**, they show active steps, playhead position, trigger probabilities, and stop steps. See [SEQ Mode LED Indication](#led-indication-in-seq-mode).
+- **In PIANO mode**, they highlight keyboard structure (white/black keys) and octave transpose/arpeggiator state. See [PIANO Mode LED Indication](#piano-mode-led-indication).
+- **In PARAMS mode**, they display active synth modules and current routing. See [PARAMS Mode Module LED Indication](#params-mode-module-led-indication).
+- **In SEQ mode**, they show active steps, playhead position, trigger probabilities, and stop steps. See [SEQ Mode LED Indication](#led-indication-in-seq-mode).
 
 ### Encoder LEDs (All modes)
 
@@ -132,8 +132,8 @@ Two LEDs located between encoders (LED 3 and 4) indicate system status. In seque
 2. **Voice Mixer:** Mixes oscillator and noise signals before sending them to filters.
 3. **Master Section:** Combines signals from all voices and routes them through **Chorus -> Delay** effect chain.
 4. **Modulation:**
-   * **LFO/EG:** Run locally within each voice for precise timbre control.
-   * **ModWheel:** Global controller affecting assigned parameters across all voices simultaneously.
+   - **LFO/EG:** Run locally within each voice for precise timbre control.
+   - **ModWheel:** Global controller affecting assigned parameters across all voices simultaneously.
 
 # OMSK Synth — User Manual & Technical Specification
 
@@ -159,27 +159,27 @@ By default, the following matrix note layout is active on the 4x4 matrix:
 > [!NOTE]
 > You can customize physical key layout settings. For details, see [Key Layout Settings in config.md](docs/config.md).
 
-* **Encoders 1-4**: Control parameters of the last selected module.
-* **Keys 1-12 (Rows 1-3)**: Keyboard playing chromatic notes (C, C#, D... B).
-* **Button 13 (Bottom row, 1)**: OCT↓ (Octave Down).
-* **Button 14 (Bottom row, 2)**: OCT↑ (Octave Up).
-* **Button 15 (Bottom row, 3)**: ARP (Arpeggiator).
-* **Button 16 (Bottom row, 4)**: ADV (Advanced).
+- **Encoders 1-4**: Control parameters of the last selected module.
+- **Keys 1-12 (Rows 1-3)**: Keyboard playing chromatic notes (C, C#, D... B).
+- **Button 13 (Bottom row, 1)**: OCT↓ (Octave Down).
+- **Button 14 (Bottom row, 2)**: OCT↑ (Octave Up).
+- **Button 15 (Bottom row, 3)**: ARP (Arpeggiator).
+- **Button 16 (Bottom row, 4)**: ADV (Advanced).
 
-* **OCT↓ + OCT↑** > Switch to PARAMS/Setup Mode
-* **OCT↓ + ADV** > Cycle Key for scale snapping
-* **OCT↑ + ARP** > Toggle HOLD
-* **ARP + ADV** > Toggle SEQ Mode
-* **LFO1 + EG1** (Pads 2+3 in Params mode) > PRESET Mode (Hold for Save, Tap for Load)
+- **OCT↓ + OCT↑** > Switch to PARAMS/Setup Mode
+- **OCT↓ + ADV** > Cycle Key for scale snapping
+- **OCT↑ + ARP** > Toggle HOLD
+- **ARP + ADV** > Toggle SEQ Mode
+- **LFO1 + EG1** (Pads 2+3 in Params mode) > PRESET Mode (Hold for Save, Tap for Load)
 
 #### PIANO Mode LED Indication
 
 LEDs under matrix buttons show keyboard layout and control state:
 
-* **White keys** (C, D, E, F, G, A, B): Soft white low brightness. Bright white on key press or MIDI note.
-* **Black keys** (C#, D#, F#, G#, A#): Dim blue/cyan low brightness. Bright blue/cyan on key press or MIDI note.
-* **OCT↓ and OCT↑ buttons**: Purple. Color shifts with octave transpose (more blue down, more red up), bright purple on press.
-* **ARP and ADV buttons**: Dim orange. Bright orange when corresponding layer/mode is active.
+- **White keys** (C, D, E, F, G, A, B): Soft white low brightness. Bright white on key press or MIDI note.
+- **Black keys** (C#, D#, F#, G#, A#): Dim blue/cyan low brightness. Bright blue/cyan on key press or MIDI note.
+- **OCT↓ and OCT↑ buttons**: Purple. Color shifts with octave transpose (more blue down, more red up), bright purple on press.
+- **ARP and ADV buttons**: Dim orange. Bright orange when corresponding layer/mode is active.
 
 #### ARP Section
 
@@ -210,109 +210,109 @@ In ADV mode (selected via ADV button), the interface shifts to global settings:
 | D     | F     | G#    | B     |
 | OCT↓  | OCT↑  | Key   | PIANO |
 
-* **Pads 1-12**: Set Scale Key (C, C#, D... B)
-* **Pad 16 (ADV/PIANO)**: Return to Piano Mode
+- **Pads 1-12**: Set Scale Key (C, C#, D... B)
+- **Pad 16 (ADV/PIANO)**: Return to Piano Mode
 
 ##### Tempo
 
-* off sync
-* external sync
-* 30
-* 31
-* …
-* 300
+- off sync
+- external sync
+- 30
+- 31
+- …
+- 300
 
 ###### Sync behaviour
 
 When SYNC is enabled, time-based parameters are tied to musical beats and are specified as fractional parts of a beat (for example: 1/1 = whole note, 1/2 = half note, 1/4 = quarter note, 1/8 = eighth note, 1/8t = eighth-note triplet, etc.). The following knobs/parameters become beat-synced and accept sync-notation instead of absolute time:
 
-* `Tempo` (global BPM reference)
-* `ARP > Rate`
-* `LFO1 > Rate` and `LFO2 > Rate` (LFO frequency is expressed as a fraction of a beat in SYNC mode)
-* `GLIDE > Time`
-* `FX1 (Delay) > Time`
-* `EG1/EG2 > Attack`, `EG1/EG2 > Decay`, and `EG1/EG2 > Release` (envelope times are interpreted as beat fractions in SYNC mode). `Sustain` remains a level/percentage and is not beat-synced.
+- `Tempo` (global BPM reference)
+- `ARP > Rate`
+- `LFO1 > Rate` and `LFO2 > Rate` (LFO frequency is expressed as a fraction of a beat in SYNC mode)
+- `GLIDE > Time`
+- `FX1 (Delay) > Time`
+- `EG1/EG2 > Attack`, `EG1/EG2 > Decay`, and `EG1/EG2 > Release` (envelope times are interpreted as beat fractions in SYNC mode). `Sustain` remains a level/percentage and is not beat-synced.
 
 In SYNC mode the LFO frequency is also specified as a fraction of the beat (e.g. `1/4` = one cycle per quarter note). Triplet and dotted divisions from the `Sync MODE` list are supported.
 
 ####### Sync range
 
-* 8/1
-* 8/1t
-* 4/1
-* 4/1t
-* 1/1
-* 1/1t
-* 1/2
-* 1/2t
-* 1/4
-* 1/4t
-* 1/8
-* 1/8t
-* 1/16
-* 1/16t
-* 1/32
-* 1/32t
-* 1/64
-* 1/64t
+- 8/1
+- 8/1t
+- 4/1
+- 4/1t
+- 1/1
+- 1/1t
+- 1/2
+- 1/2t
+- 1/4
+- 1/4t
+- 1/8
+- 1/8t
+- 1/16
+- 1/16t
+- 1/32
+- 1/32t
+- 1/64
+- 1/64t
 
 ##### Scales (MIDI Note Scale Quantizer)
 
-* OFF / Chromatic / Thru Mode
-* Major
-* Minor
-* Harmonic Minor
-* Melodic Minor
-* Dorian
-* Locrian
-* Lydian
-* Blues
-* Major Pentatonic
-* Minor Pentatonic
-* Augmented
+- OFF / Chromatic / Thru Mode
+- Major
+- Minor
+- Harmonic Minor
+- Melodic Minor
+- Dorian
+- Locrian
+- Lydian
+- Blues
+- Major Pentatonic
+- Minor Pentatonic
+- Augmented
 
 ##### Chords (Polyphonic Note Expansion)
 
 When Chord mode is active, pressing a single note triggers additional notes to form a chord.
 
-| **Category**   | **Full Name**         | **Abbr**       | **Intervals (semitones)** | **Description**               |
-| -------------- | --------------------- | -------------- | ------------------------- | ----------------------------- |
-| **Basic**      | OFF                   | **OFF**        | 0                         | No chord expansion            |
-| **Intervals**  | Minor 2nd             | **m2**         | 0, 1                      | Minor second                  |
-|                | Major 2nd             | **M2**         | 0, 2                      | Major second                  |
-|                | Minor 3rd             | **m3**         | 0, 3                      | Minor third                   |
-|                | Major 3rd             | **M3**         | 0, 4                      | Major third                   |
-|                | Perfect 4th           | **P4**         | 0, 5                      | Perfect fourth                |
-|                | Tritone               | **Tri**        | 0, 6                      | Tritone                       |
-|                | Perfect 5th           | **P5**         | 0, 7                      | Perfect fifth                 |
-|                | Minor 6th             | **m6**         | 0, 8                      | Minor sixth                   |
-|                | Major 6th             | **M6**         | 0, 9                      | Major sixth                   |
-|                | Minor 7th (Int)       | **m7i**        | 0, 10                     | Minor seventh (interval)      |
-|                | Major 7th (Int)       | **M7i**        | 0, 11                     | Major seventh (interval)      |
-|                | Octave                | **Oct**        | 0, 12                     | Octave                        |
-| **Triads**     | Major                 | **M**          | 0, 4, 7                   | Major triad                   |
-|                | Minor                 | **m**          | 0, 3, 7                   | Minor triad                   |
-|                | Diminished            | **Dim**        | 0, 3, 6                   | Diminished triad              |
-|                | Augmented             | **Aug**        | 0, 4, 8                   | Augmented triad               |
-|                | Suspended 2           | **Sus2**       | 0, 2, 7                   | Suspended 2nd                 |
-|                | Suspended 4           | **Sus4**       | 0, 5, 7                   | Suspended 4th                 |
-| **7th Chords** | Major 7th             | **M7**         | 0, 4, 7, 11               | Major 7th chord               |
-|                | Dominant 7th          | **Dom7**       | 0, 4, 7, 10               | Dominant 7th chord            |
-|                | Minor 7th             | **m7**         | 0, 3, 7, 10               | Minor 7th chord               |
-|                | Half-Diminished       | **m7b5**       | 0, 3, 6, 10               | Half-diminished 7th           |
-|                | Diminished 7th        | **Dim7**       | 0, 3, 6, 9                | Diminished 7th                |
-|                | Minor-Major 7th       | **mM7**        | 0, 3, 7, 11               | Minor-major 7th               |
-|                | Augmented-M 7th       | **AugM7**      | 0, 4, 8, 11               | Augmented major 7th           |
-|                | Augmented 7th         | **Aug7**       | 0, 4, 8, 10               | Augmented 7th                 |
-| **Extended**   | Major 6th             | **M6**         | 0, 4, 7, 9                | Major 6th chord               |
-|                | Minor 6th             | **m6**         | 0, 3, 7, 9                | Minor 6th chord               |
-|                | Add 9                 | **Add9**       | 0, 4, 7, 14               | Major add 9                   |
-|                | 7th Sus 4             | **7s4**        | 0, 5, 7, 10               | 7th suspended 4th             |
-|                | M 7th Sus 4           | **M7s4**       | 0, 5, 7, 11               | Major 7th suspended 4th       |
-| **Advanced**   | 7 Sharp 5             | **7#5**        | 0, 4, 8, 10               | Dominant 7 sharp 5            |
-|                | 7 Flat 5              | **7b5**        | 0, 4, 6, 10               | Dominant 7 flat 5             |
-|                | Quartal               | **Quart**      | 0, 5, 10, 15              | Quartal stack                 |
-|                | Lydian                | **Lyd**        | 0, 4, 6, 7                | Lydian chord (#4)             |
+| **Category**   | **Full Name**   | **Abbr**  | **Intervals (semitones)** | **Description**          |
+| -------------- | --------------- | --------- | ------------------------- | ------------------------ |
+| **Basic**      | OFF             | **OFF**   | 0                         | No chord expansion       |
+| **Intervals**  | Minor 2nd       | **m2**    | 0, 1                      | Minor second             |
+|                | Major 2nd       | **M2**    | 0, 2                      | Major second             |
+|                | Minor 3rd       | **m3**    | 0, 3                      | Minor third              |
+|                | Major 3rd       | **M3**    | 0, 4                      | Major third              |
+|                | Perfect 4th     | **P4**    | 0, 5                      | Perfect fourth           |
+|                | Tritone         | **Tri**   | 0, 6                      | Tritone                  |
+|                | Perfect 5th     | **P5**    | 0, 7                      | Perfect fifth            |
+|                | Minor 6th       | **m6**    | 0, 8                      | Minor sixth              |
+|                | Major 6th       | **M6**    | 0, 9                      | Major sixth              |
+|                | Minor 7th (Int) | **m7i**   | 0, 10                     | Minor seventh (interval) |
+|                | Major 7th (Int) | **M7i**   | 0, 11                     | Major seventh (interval) |
+|                | Octave          | **Oct**   | 0, 12                     | Octave                   |
+| **Triads**     | Major           | **M**     | 0, 4, 7                   | Major triad              |
+|                | Minor           | **m**     | 0, 3, 7                   | Minor triad              |
+|                | Diminished      | **Dim**   | 0, 3, 6                   | Diminished triad         |
+|                | Augmented       | **Aug**   | 0, 4, 8                   | Augmented triad          |
+|                | Suspended 2     | **Sus2**  | 0, 2, 7                   | Suspended 2nd            |
+|                | Suspended 4     | **Sus4**  | 0, 5, 7                   | Suspended 4th            |
+| **7th Chords** | Major 7th       | **M7**    | 0, 4, 7, 11               | Major 7th chord          |
+|                | Dominant 7th    | **Dom7**  | 0, 4, 7, 10               | Dominant 7th chord       |
+|                | Minor 7th       | **m7**    | 0, 3, 7, 10               | Minor 7th chord          |
+|                | Half-Diminished | **m7b5**  | 0, 3, 6, 10               | Half-diminished 7th      |
+|                | Diminished 7th  | **Dim7**  | 0, 3, 6, 9                | Diminished 7th           |
+|                | Minor-Major 7th | **mM7**   | 0, 3, 7, 11               | Minor-major 7th          |
+|                | Augmented-M 7th | **AugM7** | 0, 4, 8, 11               | Augmented major 7th      |
+|                | Augmented 7th   | **Aug7**  | 0, 4, 8, 10               | Augmented 7th            |
+| **Extended**   | Major 6th       | **M6**    | 0, 4, 7, 9                | Major 6th chord          |
+|                | Minor 6th       | **m6**    | 0, 3, 7, 9                | Minor 6th chord          |
+|                | Add 9           | **Add9**  | 0, 4, 7, 14               | Major add 9              |
+|                | 7th Sus 4       | **7s4**   | 0, 5, 7, 10               | 7th suspended 4th        |
+|                | M 7th Sus 4     | **M7s4**  | 0, 5, 7, 11               | Major 7th suspended 4th  |
+| **Advanced**   | 7 Sharp 5       | **7#5**   | 0, 4, 8, 10               | Dominant 7 sharp 5       |
+|                | 7 Flat 5        | **7b5**   | 0, 4, 6, 10               | Dominant 7 flat 5        |
+|                | Quartal         | **Quart** | 0, 5, 10, 15              | Quartal stack            |
+|                | Lydian          | **Lyd**   | 0, 4, 6, 7                | Lydian chord (#4)        |
 
 ### Param
 
@@ -320,8 +320,8 @@ When Chord mode is active, pressing a single note triggers additional notes to f
 
 In this mode, the button matrix selects the active module for editing.
 
-* **Encoders 1-4**: Change parameters of selected module.
-* **Buttons 1-16**: Select active module. Active module highlights with its color.
+- **Encoders 1-4**: Change parameters of selected module.
+- **Buttons 1-16**: Select active module. Active module highlights with its color.
 
 #### Button Layout (PARAMS Mode)
 
@@ -332,31 +332,31 @@ In this mode, the button matrix selects the active module for editing.
 | NOISE | FX1  | GLIDE | SET  |
 | MIXER | FX2  | MOD   | FN   |
 
-* **"MIXER" + "FX2"** > Return to Piano Mode
-* **SET** (Short tap) > Toggle Assignment Mode
-* **SET** (Hold) + Encoder > Adjust Modulation Depth
-* **FN** (Hold) + Pad/Encoder > Clear assignment
+- **"MIXER" + "FX2"** > Return to Piano Mode
+- **SET** (Short tap) > Toggle Assignment Mode
+- **SET** (Hold) + Encoder > Adjust Modulation Depth
+- **FN** (Hold) + Pad/Encoder > Clear assignment
 
 #### PARAMS Mode Module LED Indication
 
-| LED Index | Module | Color (base)           | Default Brightness   | Pressed / Selected Brightness |
-| --------- | ------ | ---------------------- | -------------------- | ----------------------------- |
-| 7         | VCO1   | White / Filter clr     | 5%                   | 70%                           |
-| 8         | VCF1   | Pink (255,30,100)      | 20%                  | 70%                           |
-| 9         | LFO1   | Lt Blue (100,200,255)  | 20%                  | 70%                           |
-| 10        | EG1    | Lt Green (100,255,100) | 20%                  | 70%                           |
-| 11        | VCO2   | White / Filter clr     | 5%                   | 70%                           |
-| 12        | VCF2   | Magenta (255,0,255)    | 20%                  | 70%                           |
-| 13        | LFO2   | Blue (0,0,255)         | 20%                  | 70%                           |
-| 14        | EG2    | Green (0,255,0)        | 20%                  | 70%                           |
-| 15        | NOISE  | White / Filter clr     | 5%                   | 70%                           |
-| 16        | FX1    | Yellow (255,255,0)     | 20%                  | 70%                           |
-| 17        | GLIDE  | Cyan (0,255,255)       | 20%                  | 70%                           |
-| 18        | SET    | Red (255,0,0)          | 20%                  | 70%                           |
-| 19        | MIXER  | Warm Wht (255,200,130) | 20%                  | 70%                           |
-| 20        | FX2    | Orange (255,100,0)     | 20%                  | 70%                           |
-| 21        | MOD    | Gold (255,200,0)       | 20%                  | 70%                           |
-| 22        | FN     | Coral (255,80,0)       | 20%                  | 70%                           |
+| LED Index | Module | Color (base)           | Default Brightness | Pressed / Selected Brightness |
+| --------- | ------ | ---------------------- | ------------------ | ----------------------------- |
+| 7         | VCO1   | White / Filter clr     | 5%                 | 70%                           |
+| 8         | VCF1   | Pink (255,30,100)      | 20%                | 70%                           |
+| 9         | LFO1   | Lt Blue (100,200,255)  | 20%                | 70%                           |
+| 10        | EG1    | Lt Green (100,255,100) | 20%                | 70%                           |
+| 11        | VCO2   | White / Filter clr     | 5%                 | 70%                           |
+| 12        | VCF2   | Magenta (255,0,255)    | 20%                | 70%                           |
+| 13        | LFO2   | Blue (0,0,255)         | 20%                | 70%                           |
+| 14        | EG2    | Green (0,255,0)        | 20%                | 70%                           |
+| 15        | NOISE  | White / Filter clr     | 5%                 | 70%                           |
+| 16        | FX1    | Yellow (255,255,0)     | 20%                | 70%                           |
+| 17        | GLIDE  | Cyan (0,255,255)       | 20%                | 70%                           |
+| 18        | SET    | Red (255,0,0)          | 20%                | 70%                           |
+| 19        | MIXER  | Warm Wht (255,200,130) | 20%                | 70%                           |
+| 20        | FX2    | Orange (255,100,0)     | 20%                | 70%                           |
+| 21        | MOD    | Gold (255,200,0)       | 20%                | 70%                           |
+| 22        | FN     | Coral (255,80,0)       | 20%                | 70%                           |
 
 **VCO1/VCO2/NOISE**: By default glow white at 5%. If assigned to filter (`route_vco == 1` → VCF1/Pink, `route_vco == 2` → VCF2/Magenta), LED takes filter color.
 
@@ -433,10 +433,10 @@ BLAMP (Band-Limited Ramp) — same principle applied to derivative slope breaks.
 
 Computing digital filters (especially resonant filters and high-order filters with large Q) is computationally expensive for microcontrollers. We recommend:
 
-* Use precomputed lookup tables (LUT) for key coefficients/values and simple interpolation between points.
-* Limit filter order or apply cascades of simple single-pole/two-pole blocks (SVF) to distribute the computational load.
-* Calculate heavy coefficients when parameters change (or on low-frequency ticks), not on every audio sample.
-* Implement anti-aliasing or windowing for strong modulation and in sync modes.
+- Use precomputed lookup tables (LUT) for key coefficients/values and simple interpolation between points.
+- Limit filter order or apply cascades of simple single-pole/two-pole blocks (SVF) to distribute the computational load.
+- Calculate heavy coefficients when parameters change (or on low-frequency ticks), not on every audio sample.
+- Implement anti-aliasing or windowing for strong modulation and in sync modes.
 
 This approach ensures predictable performance and reduces artifacts without significantly increasing CPU load.
 
@@ -448,11 +448,11 @@ Key tracking allows the note played on the keyboard to influence the cutoff freq
 
 ##### Filter Type
 
-* **Cutoff:** Range 20 Hz — 20,000 Hz.
-* 2nd order filter (12 dB/oct). Several filter types supported in config (PRA32
-* , SVF, Moog Ladder), see [Firmware Config](docs/config.md).
-* **Key Tracking (±100%):** $F_{actual} = F_{cutoff} + (Note - 60) \times Tracking$. Cutoff calculation via LUT (no `pow()`).
-* **Resonance:** With gain compensation to preserve volume.
+- **Cutoff:** Range 20 Hz — 20,000 Hz.
+- 2nd order filter (12 dB/oct). Several filter types supported in config (PRA32
+- , SVF, Moog Ladder), see [Firmware Config](docs/config.md).
+- **Key Tracking (±100%):** $F_{actual} = F_{cutoff} + (Note - 60) \times Tracking$. Cutoff calculation via LUT (no `pow()`).
+- **Resonance:** With gain compensation to preserve volume.
 
 | Parameter | Name        | Description | Min | Max   | Unit | Note    |
 | --------- | ----------- | ----------- | --- | ----- | ---- | ------- |
@@ -483,10 +483,10 @@ To route a source to a filter:
 
 Use `FN` key to clear routings:
 
-| **Task**                       | **Combo**                                          |
-| ------------------------------ | -------------------------------------------------- |
-| **Disconnect filter from src** | `FN (hold) > [Signal Source] > FN (release)`       |
-| **Reset ALL filter routings**  | `FN (hold) > [Filter: VCF1/2] > FN (release)`      |
+| **Task**                       | **Combo**                                     |
+| ------------------------------ | --------------------------------------------- |
+| **Disconnect filter from src** | `FN (hold) > [Signal Source] > FN (release)`  |
+| **Reset ALL filter routings**  | `FN (hold) > [Filter: VCF1/2] > FN (release)` |
 
 ###### Source/Target Overview
 
@@ -496,9 +496,9 @@ Use `FN` key to clear routings:
 
 #### Shape
 
-* **SIN / TRI / SAW**: Audio-rate Wavefolding depth (up to 8 folds).
-* **SQR / PWM**: Sub-pulse generation or binary folding.
-* **PAM4**: Pattern-specific modifier.
+- **SIN / TRI / SAW**: Audio-rate Wavefolding depth (up to 8 folds).
+- **SQR / PWM**: Sub-pulse generation or binary folding.
+- **PAM4**: Pattern-specific modifier.
 
 #### Mixer
 
@@ -552,8 +552,8 @@ Any parameter knob can be automated using one of five modulators: **ModWheel**, 
 
 To bind a modulator to a parameter:
 
-* **For ModWheel:** `SET (hold) > ModWh > [Parameter] > SET (release)`
-* **For LFO and EG:** `[Source: LFO1/2 or EG1/2] > SET (hold) > [Parameter] > SET (release)`
+- **For ModWheel:** `SET (hold) > ModWh > [Parameter] > SET (release)`
+- **For LFO and EG:** `[Source: LFO1/2 or EG1/2] > SET (hold) > [Parameter] > SET (release)`
 
 > **Example:** Bind LFO1 to VCO1 Volume:
 >
@@ -563,18 +563,18 @@ To bind a modulator to a parameter:
 
 Use `FN` key to clear assignments:
 
-| **Task**                         | **Combo**                                                      |
-| -------------------------------- | -------------------------------------------------------------- |
-| **Delete specific routing**      | `FN (hold) > [Target Parameter] > FN (release)`                |
-| **Reset ALL modulator routings** | `FN (hold) > [Source: ModWh, LFO or EG] > FN (release)`       |
+| **Task**                         | **Combo**                                               |
+| -------------------------------- | ------------------------------------------------------- |
+| **Delete specific routing**      | `FN (hold) > [Target Parameter] > FN (release)`         |
+| **Reset ALL modulator routings** | `FN (hold) > [Source: ModWh, LFO or EG] > FN (release)` |
 
 #### Sources and Targets Summary
 
-| **Type**             | **Sources**   | **Targets**            |
-| -------------------- | ------------- | ---------------------- |
-| **Wheel**            | ModWheel      | Any control knob       |
-| **LFO Generators**   | LFO1, LFO2    | Any control knob       |
-| **Envelopes**        | EG1, EG2      | Any control knob       |
+| **Type**           | **Sources** | **Targets**      |
+| ------------------ | ----------- | ---------------- |
+| **Wheel**          | ModWheel    | Any control knob |
+| **LFO Generators** | LFO1, LFO2  | Any control knob |
+| **Envelopes**      | EG1, EG2    | Any control knob |
 
 #### Modulation Depth
 
@@ -625,36 +625,36 @@ Plays specified notes in a loop. Up to 64 steps (16 steps * 4 pages). Each page 
 
 ###### 1. Step Status (16 Matrix Pads)
 
-* **Empty Step:** Off (Black).
-* **Active Step (Trig):** Green (if cycle condition 2/4/8 is currently met).
-* **Standby Step:** Yellow (if cycle condition 2/4/8 is NOT currently met).
-* **Mute:** Pink.
-* **Stop Step (Sequence End):** Red.
-* **Current Step (Playhead):** White (overlaid on top with max brightness).
+- **Empty Step:** Off (Black).
+- **Active Step (Trig):** Green (if cycle condition 2/4/8 is currently met).
+- **Standby Step:** Yellow (if cycle condition 2/4/8 is NOT currently met).
+- **Mute:** Pink.
+- **Stop Step (Sequence End):** Red.
+- **Current Step (Playhead):** White (overlaid on top with max brightness).
 
 ###### 2. Probability
 
 Brightness defines triggering probability (for Green, Yellow, Pink):
 
-* **100%:** Max brightness (255).
-* **75-85%:** High brightness (190-210).
-* **40-50%:** Medium brightness (110-130).
-* **10-25%:** Low brightness (40-70).
-* **0%:** Step becomes visually black.
+- **100%:** Max brightness (255).
+- **75-85%:** High brightness (190-210).
+- **40-50%:** Medium brightness (110-130).
+- **10-25%:** Low brightness (40-70).
+- **0%:** Step becomes visually black.
 
 ###### 3. Status LEDs (2 RGB LEDs)
 
 ####### LED 3: Transport Status (Play/Pause)
 
-* **Play:** Solid Green.
-* **Pause/Stop:** Red (or Orange).
+- **Play:** Solid Green.
+- **Pause/Stop:** Red (or Orange).
 
 ####### LED 4: Navigation (Pages 1-4)
 
-* **Page 1 (1-16):** Red.
-* **Page 2 (17-32):** Green.
-* **Page 3 (33-48):** Blue.
-* **Page 4 (49-64):** Purple.
+- **Page 1 (1-16):** Red.
+- **Page 2 (17-32):** Green.
+- **Page 3 (33-48):** Blue.
+- **Page 4 (49-64):** Purple.
 
 ###### Layering Priority
 
@@ -664,18 +664,18 @@ Evaluate LED color conditions in this exact order:
 2. **Stop:** If `step == stop_step`, color = **RED**.
 3. **Mute:** If `is_muted`, color = **PINK** (brightness = Probability).
 4. **Loop Condition:**
-   * If cycle condition matches, color = **GREEN** (brightness = Probability).
-   * If cycle condition does NOT match, color = **YELLOW** (brightness = Probability).
+   - If cycle condition matches, color = **GREEN** (brightness = Probability).
+   - If cycle condition does NOT match, color = **YELLOW** (brightness = Probability).
 5. **Default:** If step inactive, color = **BLACK**.
 
 #### Play Mode Descriptions
 
-* **Forward** (UP): plays steps 1→2→3→...→16→1 sequentially
-* **Backward** (DOWN): plays steps in reverse 16→15→14→...→1→16
-* **Pingpong** (UP-DN): plays forward 1→16, then immediately backward 16→1
-* **Snake** (SNK): plays in a serpentine pattern across 4x4 grid (1→2→3→4→8→7→6→5→9→10→11→12→16→15→14→13)
-* **Random** (RND): selects a random step on each beat
-* **Drunk**: random walk — moves to an adjacent step (±1) on each beat
+- **Forward** (UP): plays steps 1→2→3→...→16→1 sequentially
+- **Backward** (DOWN): plays steps in reverse 16→15→14→...→1→16
+- **Pingpong** (UP-DN): plays forward 1→16, then immediately backward 16→1
+- **Snake** (SNK): plays in a serpentine pattern across 4x4 grid (1→2→3→4→8→7→6→5→9→10→11→12→16→15→14→13)
+- **Random** (RND): selects a random step on each beat
+- **Drunk**: random walk — moves to an adjacent step (±1) on each beat
 
 STP"X" > Mute step — Disables playback for specified step
 

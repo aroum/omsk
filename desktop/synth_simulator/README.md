@@ -1,4 +1,3 @@
-
 `uv sync`
 
 `source .venv/bin/activate.fish`

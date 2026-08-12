@@ -38,3 +38,4 @@ sw/build_log.txt
 *.uf2
 *.elf
 *.bin
+/hardware/pcb/production/backups

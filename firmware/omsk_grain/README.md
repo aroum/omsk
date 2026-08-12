@@ -10,8 +10,8 @@ Samples are embedded into the firmware. They are pre-converted to mono and downs
 
 | row/col | col1           | col2          | col3          | col4          |
 | ------- | -------------- | ------------- | ------------- | ------------- |
-| row1    | Grain 1 [V]    | Grain 2 [V]   | Grain 3  [V]  | Filter[V]     |
-| row2    | Jitter  [-]    | LFO 1  [V]    | LFO 2 [V]     | EG [V]        |
+| row1    | Grain 1 [V]    | Grain 2 [V]   | Grain 3 [V]   | Filter[V]     |
+| row2    | Jitter [-]     | LFO 1 [V]     | LFO 2 [V]     | EG [V]        |
 | row3    | Modulation [G] | FX [G]        | Mix [G]       | Sys[G]        |
 | row4    | Trigger 1 [-]  | Trigger 2 [-] | Trigger 3 [-] | Trigger 4 [-] |
 
@@ -78,14 +78,14 @@ Samples are embedded into the firmware. They are pre-converted to mono and downs
 
 ### Filter (Per Voice)
 
-| #          | enc 1            | enc 2      | enc 3              | enc 4                                               |
-| ---------- | ---------------- | ---------- | ------------------ | --------------------------------------------------- |
-| Short Name | CUT              | RES        | TYPE               | KTRK                                                |
-| Full Name  | Cutoff           | Resonance  | Filter Type        | Keytrack                                            |
-| Desc       | Cutoff frequency | Q-factor   |                    | Scaling based on MIDI note. Not working for trig1-4 |
-| Range      | 20Hz:log:16kHz   | 0.5:0.1:13 | Off / LP / HP / BP | 0:1:100                                             |
-| Unit       | HZ/KHZ           | ---        | ---                | %                                                   |
- 999HZ should become 1.00KHZ
+| #                           | enc 1            | enc 2      | enc 3              | enc 4                                               |
+| --------------------------- | ---------------- | ---------- | ------------------ | --------------------------------------------------- |
+| Short Name                  | CUT              | RES        | TYPE               | KTRK                                                |
+| Full Name                   | Cutoff           | Resonance  | Filter Type        | Keytrack                                            |
+| Desc                        | Cutoff frequency | Q-factor   |                    | Scaling based on MIDI note. Not working for trig1-4 |
+| Range                       | 20Hz:log:16kHz   | 0.5:0.1:13 | Off / LP / HP / BP | 0:1:100                                             |
+| Unit                        | HZ/KHZ           | ---        | ---                | %                                                   |
+| 999HZ should become 1.00KHZ |                  |            |                    |                                                     |
 
 ### EG (Per Voice)
 
@@ -94,13 +94,13 @@ Amplitude Envelope
 See `eg.py`
 For CURV use lut
 
-| #          | enc 1        | enc 2                                                       | enc 3         | enc 4         |
-| ---------- | ------------ | ----------------------------------------------------------- | ------------- | ------------- |
-| Short Name | ATK          | A.CURV                                                      | REL           | R.CURV        |
-| Full Name  | Attack Time  | Attack Curve                                                | Release Curve | Release Time  |
-| Desc       |              | < 0 — convex (logarithmic); > 0 — concave (exponential)    |               |               |
-| Range      | 0.0:0.01:5.0 | -1.0:0.1:+1.0                                               | 0.0:0.01:5.0  | -1.0:0.1:+1.0 |
-| Unit       | sec          | ---                                                         | sec           | ---           |
+| #          | enc 1        | enc 2                                                   | enc 3         | enc 4         |
+| ---------- | ------------ | ------------------------------------------------------- | ------------- | ------------- |
+| Short Name | ATK          | A.CURV                                                  | REL           | R.CURV        |
+| Full Name  | Attack Time  | Attack Curve                                            | Release Curve | Release Time  |
+| Desc       |              | < 0 — convex (logarithmic); > 0 — concave (exponential) |               |               |
+| Range      | 0.0:0.01:5.0 | -1.0:0.1:+1.0                                           | 0.0:0.01:5.0  | -1.0:0.1:+1.0 |
+| Unit       | sec          | ---                                                     | sec           | ---           |
 
 ### Sys (Global)
 
@@ -190,7 +190,7 @@ Played MIDI notes affect the pitch (playback speed) of generated grains accordin
 - RM2x4
 - RM3x4
 
-### LFO 1 & 2  (Global)
+### LFO 1 & 2 (Global)
 
 | #          | enc 1      | enc 2                | enc 3       | enc 4                |
 | ---------- | ---------- | -------------------- | ----------- | -------------------- |
@@ -200,7 +200,7 @@ Played MIDI notes affect the pitch (playback speed) of generated grains accordin
 | Range      | 0.1:0.1:40 | Sin/Tri/Saw/RSAW/S&H | 0:1:180     | V1/V2/V3/V4/ANY/FREE |
 | Unit       | Hz         | ---                  | deg         | ---                  |
 
-### Jitter  (Global)
+### Jitter (Global)
 
 | #          | enc 1 | enc 2 | enc 3 | enc 4 |
 | ---------- | ----- | ----- | ----- | ----- |

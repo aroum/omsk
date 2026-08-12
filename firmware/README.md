@@ -20,6 +20,7 @@ This repository contains the firmware source code for the OMSK hardware platform
 To compile firmware for RP2040 / RP2350, you need the ARM GCC toolchain along with the C standard library (`newlib`), CMake, and build tools.
 
 #### macOS (Homebrew)
+
 > [!IMPORTANT]
 > Make sure to install `arm-none-eabi-newlib`. Without it, GCC will fail with `stdint.h: No such file or directory` error when compiling C standard headers.
 
@@ -28,6 +29,7 @@ brew install cmake ninja arm-none-eabi-binutils arm-none-eabi-gcc arm-none-eabi-
 ```
 
 #### Ubuntu / Debian
+
 ```bash
 sudo apt update
 sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
@@ -38,16 +40,19 @@ sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi build-essential
 Before building any firmware, ensure the repository submodules (such as TinyUSB, u8g2, CMSIS-DSP, etc.) are fully initialized.
 
 Clone with submodules:
+
 ```bash
 git clone --recursive https://github.com/aroum/omsk.git
 ```
 
 Or if you have already cloned the repository without submodules:
+
 ```bash
 git submodule update --init --recursive
 ```
 
 Make sure you have the **Pico SDK** installed and `PICO_SDK_PATH` set in your environment:
+
 ```bash
 export PICO_SDK_PATH=/path/to/pico-sdk
 ```
@@ -69,11 +74,13 @@ Standard `.uf2` files add significant block header overhead (nearly doubling the
 `picotool` allows flashing `.bin` and `.elf` binaries directly over USB without requiring drag-and-drop or external HW debuggers.
 
 #### macOS
+
 ```bash
 brew install picotool
 ```
 
 #### Ubuntu / Debian
+
 ```bash
 sudo apt install picotool
 ```
@@ -94,6 +101,7 @@ cd firmware/omsk_wave
 ```
 
 #### Script Flags & Options:
+
 - `-c`, `--clean`: Remove build directory and re-run CMake configuration from scratch.
 - `-s`, `--size`: Print detailed Flash and RAM memory usage report after build.
 - `-p <platform>`: Target MCU platform (`rp2040` or `rp2350`, default is `rp2350`).
@@ -117,30 +125,35 @@ picotool load build_rp2350/omsk_wave.elf -u
 ### Build & Flash Examples
 
 Build **`omsk_wave`** for RP2350 and flash to hardware:
+
 ```bash
 cd firmware/omsk_wave
 ./build_all.sh -p rp2350 -c -s -f
 ```
 
 Build **`omsk_fm`** for RP2040 and flash:
+
 ```bash
 cd firmware/omsk_fm
 ./build_all.sh -p rp2040 -s -f
 ```
 
 Build **`omsk_grain`** for RP2350:
+
 ```bash
 cd firmware/omsk_grain
 ./build_all.sh -p rp2350 -c -s
 ```
 
 Build **`omsk_midi`**:
+
 ```bash
 cd firmware/omsk_midi
 ./build_all.sh -p rp2350 -c -s
 ```
 
 Build OLED display test utility:
+
 ```bash
 cd firmware/omsk_oled_test
 ./build.sh
