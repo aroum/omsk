@@ -67,33 +67,16 @@ void Synth::process(int frames, float* out_l, float* out_r) {
             if (amt <= 0.001f) continue;
 
             if (r >= 1 && r <= 12) { // FM
-                // Route mapping logic: 1-12 maps to s!=d pairs
-                int idx = 1;
-                for (int s=0; s<4; s++) {
-                    for (int d=0; d<4; d++) {
-                        if (s != d) {
-                            if (idx == r) {
-                                for (int i=0; i<frames; i++) fm_signal[i] += voices[s].last_buffer[i] * amt * 5.0f;
-                            }
-                            idx++;
-                        }
-                    }
+                int s = (r - 1) / 3;
+                for (int i = 0; i < frames; i++) {
+                    fm_signal[i] += voices[s].last_buffer[i] * amt * 5.0f;
                 }
             } else if (r >= 13 && r <= 24) { // RM
-                int idx = 13;
-                for (int s=0; s<4; s++) {
-                    for (int d=0; d<4; d++) {
-                        if (s != d) {
-                            if (idx == r) {
-                                rm_amt = amt;
-                                float env = voices[s].get_last_env(); // 0.0f to 1.0f
-                                for (int i=0; i<frames; i++) {
-                                    rm_signal[i] = voices[s].last_buffer[i] + (1.0f - env) * 0.2f;
-                                }
-                            }
-                            idx++;
-                        }
-                    }
+                int s = (r - 13) / 3;
+                rm_amt = amt;
+                float env = voices[s].get_last_env(); // 0.0f to 1.0f
+                for (int i = 0; i < frames; i++) {
+                    rm_signal[i] = voices[s].last_buffer[i] + (1.0f - env) * 0.2f;
                 }
             }
         }
