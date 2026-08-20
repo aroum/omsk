@@ -14,11 +14,6 @@ else()
 endif()
 pico_sdk_init()
 
-# Add CMSIS-DSP
-add_subdirectory(../shared/lib/CMSIS-DSP CMSIS-DSP)
-target_include_directories(CMSISDSP PRIVATE ${PICO_SDK_PATH}/src/rp2_common/cmsis/stub/CMSIS/Core/Include)
-target_compile_options(CMSISDSP PRIVATE -O0)
-
 add_executable(omsk_fm
     src/main.cpp
     src/synth/synth.cpp
@@ -33,7 +28,6 @@ add_executable(omsk_fm
     ../shared/hardware/matrix.cpp
     ../shared/hardware/encoders.cpp
     ../shared/hardware/midi_uart.cpp
-    ../shared/dsp/fast_math.cpp
     src/leds/leds.cpp
     src/sequencer/sequencer.cpp
     src/usb/usb_descriptors.c
@@ -41,10 +35,8 @@ add_executable(omsk_fm
 )
 
 # Generate PIO headers
-pico_generate_pio_header(omsk_fm ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/audio.pio)
 pico_generate_pio_header(omsk_fm ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/ws2812.pio)
 pico_generate_pio_header(omsk_fm ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/i2s_tx.pio)
-pico_generate_pio_header(omsk_fm ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/button_matrix.pio)
 
 # Add include directories
 target_include_directories(omsk_fm PRIVATE
@@ -57,10 +49,7 @@ target_include_directories(omsk_fm PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/src/midi
     ${CMAKE_CURRENT_LIST_DIR}/src/sequencer
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_LIST_DIR}/../shared/lib/CMSIS-DSP/Include
     ${CMAKE_CURRENT_LIST_DIR}/../shared/hardware
-    ${CMAKE_CURRENT_LIST_DIR}/../shared/dsp
-    ${PICO_SDK_PATH}/src/rp2_common/cmsis/stub/CMSIS/Core/Include
 )
 
 set(U8G2_DIR ${CMAKE_CURRENT_LIST_DIR}/../shared/lib/u8g2)

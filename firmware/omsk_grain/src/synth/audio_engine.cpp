@@ -6,7 +6,6 @@
 #include "../sw_config.h"
 #include "../tables/audio_data_wrapper.h"
 #include "../tables/eg_lut.h"
-#include "fast_math.h"
 
 // ------------------------------------------------------------------ //
 //  LOOKUP TABLES
@@ -328,13 +327,13 @@ void GranularEngine::spawn_grain() {
             // Reference note is C4 (note 60).
             int note_for_pitch = (current_note >= 0) ? current_note : last_note;
             if (p.keytrack > 0.001f && note_for_pitch >= 0) {
-                float keytrack_mult = fast_exp2(p.keytrack * (note_for_pitch - 60.0f) / 12.0f);
+                float keytrack_mult = exp2f(p.keytrack * (note_for_pitch - 60.0f) / 12.0f);
                 mod_pitch *= keytrack_mult;
             }
 
             // Apply Pitch Bend
             if (pitch_bend_semitones != 0.0f) {
-                mod_pitch *= fast_exp2(pitch_bend_semitones / 12.0f);
+                mod_pitch *= exp2f(pitch_bend_semitones / 12.0f);
             }
 
             

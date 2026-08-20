@@ -15,11 +15,6 @@ endif()
 pico_sdk_init()
 
 
-# Add CMSIS-DSP
-add_subdirectory(../shared/lib/CMSIS-DSP CMSIS-DSP)
-target_include_directories(CMSISDSP PRIVATE ${PICO_SDK_PATH}/src/rp2_common/cmsis/stub/CMSIS/Core/Include)
-target_compile_options(CMSISDSP PRIVATE -O0)
-
 add_executable(omsk_wave
     src/main.c
     src/synth/synth.c
@@ -31,7 +26,6 @@ add_executable(omsk_wave
     ../shared/hardware/matrix.cpp
     ../shared/hardware/encoders.cpp
     ../shared/hardware/midi_uart.cpp
-    ../shared/dsp/fast_math.cpp
     src/leds/leds.c
     src/synth/pra_synth.c
     src/tables/omsk_wavetables.c
@@ -51,7 +45,6 @@ add_executable(omsk_wave
 pico_generate_pio_header(omsk_wave ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/audio.pio)
 pico_generate_pio_header(omsk_wave ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/ws2812.pio)
 pico_generate_pio_header(omsk_wave ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/i2s_tx.pio)
-pico_generate_pio_header(omsk_wave ${CMAKE_CURRENT_LIST_DIR}/../shared/pio/button_matrix.pio)
 
 # Add include directories
 target_include_directories(omsk_wave PRIVATE
@@ -64,18 +57,11 @@ target_include_directories(omsk_wave PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/src/fx
     ${CMAKE_CURRENT_LIST_DIR}/src/tables
     ${CMAKE_CURRENT_LIST_DIR}/src/ui
-
     ${CMAKE_CURRENT_LIST_DIR}/src/leds
     ${CMAKE_CURRENT_LIST_DIR}/src/midi
-    ${CMAKE_CURRENT_LIST_DIR}/src/buttons
-    ${CMAKE_CURRENT_LIST_DIR}/src/encoders
     ${CMAKE_CURRENT_LIST_DIR}/src/sequencer
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_CURRENT_LIST_DIR}/../insp/digital-synth-pra32-u2/Digital-Synth-PRA32-U2
-    ${CMAKE_CURRENT_LIST_DIR}/../shared/lib/CMSIS-DSP/Include
     ${CMAKE_CURRENT_LIST_DIR}/../shared/hardware
-    ${CMAKE_CURRENT_LIST_DIR}/../shared/dsp
-    ${PICO_SDK_PATH}/src/rp2_common/cmsis/stub/CMSIS/Core/Include
 )
 
 set(U8G2_DIR ${CMAKE_CURRENT_LIST_DIR}/../shared/lib/u8g2)

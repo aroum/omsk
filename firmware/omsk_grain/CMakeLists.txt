@@ -34,7 +34,6 @@ add_executable(omsk_grain
     ../shared/hardware/matrix.cpp
     ../shared/hardware/encoders.cpp
     ../shared/hardware/midi_uart.cpp
-    ../shared/dsp/fast_math.cpp
     ${U8G2_SRC}
 )
 
@@ -51,7 +50,6 @@ target_include_directories(omsk_grain PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/src/midi
     ${CMAKE_CURRENT_LIST_DIR}/src/usb
     ${CMAKE_CURRENT_LIST_DIR}/../shared/hardware
-    ${CMAKE_CURRENT_LIST_DIR}/../shared/dsp
     ${U8G2_DIR}
 )
 
