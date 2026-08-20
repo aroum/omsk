@@ -15,7 +15,6 @@
 #include "../tables/omsk_lut_data.h"
 #include "../tables/omsk_wavetables.h"
 #include "../tables/omsk_glide_slope_table.h"
-#include "../tables/vcf_table_manager.h"
 #include "../tables/vco_lut_data.h"
 #include "omsk_core.h"
 #include "pico/float.h"
@@ -25,9 +24,6 @@
 #ifndef __not_in_flash_func
 #define __not_in_flash_func(x) x
 #endif
-
-// CMSIS-DSP
-#include "arm_math.h"
 
 extern "C" uint8_t seq_get_bpm(void);
 

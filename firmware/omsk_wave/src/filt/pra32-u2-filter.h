@@ -5,7 +5,6 @@
 #if CFG_FILTER_MODE == FILTER_MODE_PRA32_TABLES
 #include "../tables/pra32-u2-filter-table.h"
 #endif
-#include "moog-ladder-filter.h"
 #include "../tables/vcf_lut_data.h"
 
 static INLINE int32_t soft_clip(int32_t value) {

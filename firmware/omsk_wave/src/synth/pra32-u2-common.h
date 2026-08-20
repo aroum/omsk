@@ -1,7 +1,8 @@
 #pragma once
-#include "pra32-u2-constants.h"
 #include <stddef.h>
 #include <stdint.h>
+
+const int8_t FILTER_TABLE_FRACTION_BITS = 30;
 
 
 #define INLINE inline __attribute__((always_inline))
