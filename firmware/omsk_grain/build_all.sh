@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Environment setup
-export PICO_SDK_PATH="/Users/aroum/pico/pico-sdk"
+export PICO_SDK_PATH="${PICO_SDK_PATH:-$HOME/pico/pico-sdk}"
 export PATH="/opt/homebrew/bin:$PATH"
 
 # Configuration
