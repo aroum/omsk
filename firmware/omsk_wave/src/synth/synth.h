@@ -6,6 +6,10 @@
 #include <stdint.h>
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // Global parameters instance
 extern SynthParams params;
 
@@ -18,14 +22,13 @@ int16_t synth_get_sample(void);
 void synth_note_on(uint8_t note, uint8_t velocity);
 void synth_note_off(uint8_t note);
 
-// Legacy/Helper setters (maps to params)
-void synth_set_lpf_cutoff(uint8_t val);
-void synth_set_resonance(uint8_t val);
-void synth_set_lfo_freq(uint8_t val);
-void synth_set_param(int module, int param_idx, uint8_t value);
-
 bool synth_preset_save(uint8_t slot);
 bool synth_preset_load(uint8_t slot);
 void synth_apply_all_params(void);
+uint8_t synth_get_param_value(ParamID param);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

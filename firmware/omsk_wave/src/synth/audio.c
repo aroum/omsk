@@ -23,8 +23,6 @@
 bool usb_audio_push_sample(int16_t left, int16_t right);
 #endif
 
-void audio_usb_task(void){}
-
 // Exactly one physical backend must be enabled, UNLESS we are in USB-only mode
 #if !CFG_ENABLE_USB_AUDIO
 #if ((CFG_ENABLE_PWM8_AUDIO ? 1 : 0) + (CFG_ENABLE_DAC ? 1 : 0)) != 1

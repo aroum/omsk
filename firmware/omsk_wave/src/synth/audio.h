@@ -10,6 +10,5 @@
 void audio_init(void);
 void usb_audio_init(void);
 void audio_start(void);
-void audio_usb_task(void);
 
 #endif

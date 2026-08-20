@@ -187,7 +187,6 @@ int main() {
 #endif
 #if CFG_ENABLE_USB
     usb_midi_task();
-    audio_usb_task(); // Push buffered audio to USB
 #endif
 #if CFG_ENABLE_USB_MIDI
     uint8_t buf[64];

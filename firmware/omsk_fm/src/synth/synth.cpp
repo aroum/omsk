@@ -330,15 +330,6 @@ void synth_note_off(uint8_t note) {
 
 int16_t synth_get_sample(void) { return pra_synth_get_sample(); }
 
-void synth_set_lpf_cutoff(uint8_t val) { params.vcf1_cutoff = val; }
-void synth_set_resonance(uint8_t val) { params.vcf1_res = val; }
-void synth_set_lfo_freq(uint8_t val) { params.lfo1_rate = val; }
-void synth_set_param(int module, int param_idx, uint8_t value) {
-  (void)module;
-  (void)param_idx;
-  (void)value;
-}
-
 void synth_apply_all_params(void) {
   for (int p = 0; p < PARAM_COUNT; p++) {
     pra_synth_param_change((ParamID)p, get_param_value((ParamID)p));

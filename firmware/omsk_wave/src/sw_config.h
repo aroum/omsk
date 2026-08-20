@@ -60,33 +60,10 @@ static const char CFG_PIANO_LAYOUT[CFG_PIANO_LAYOUT_ROWS][CFG_PIANO_LAYOUT_COLS]
 // =============================================================================
 
 // --- Filter Mode Selection ---
-  // 12 dB/oct. 3 modes (LPF/BPF/HPF) calculated on-the-fly from a single LPF table. LUT size: ~2.6 MB. CPU: ~1.5% per voice
-  #define FILTER_MODE_PRA32_TABLES 0 
-
-  // 12 dB/oct. Legacy: Real-time SVF math, full LPF->BPF->HPF morph. LUT size: 0 bytes. CPU: ~8% per voice
-  #define FILTER_MODE_MORPH_SVF 1 
-
-  // 12 dB/oct. Compromise: 5 precomputed tables (LPF/BPF/HPF/BSF/APF) with interpolation. LUT size: ~1.4 MB. CPU: ~2.2% per voice
-  #define FILTER_MODE_3_TABLES 2
-
-  // 24 dB/oct. Moog Ladder LPF (4-pole). LUT size: ~7.4 KB. CPU: ~5.5% per voice
-  #define FILTER_MODE_MOOG_LADDER 3
+#define FILTER_MODE_PRA32_TABLES 0 // Single LPF table, LPF/BPF/HPF calculated on-the-fly (~2.6MB)
+#define FILTER_MODE_3_TABLES 2     // 5 precomputed tables with interpolation (~1.4MB)
 
 #define CFG_FILTER_MODE FILTER_MODE_PRA32_TABLES
-
-// --- EG Mode Selection ---
-#define EG_MODE_TABLE 0
-#define EG_MODE_CALC 1
-#define CFG_EG_MODE EG_MODE_TABLE
-
-// --- LFO Mode Selection ---
-#define LFO_MODE_TABLE 0
-#define LFO_MODE_CALC 1
-#define CFG_LFO_MODE LFO_MODE_TABLE
-
-// --- OSC Mode Selection ---
-#define OSC_MODE_TABLE 0
-#define CFG_OSC_MODE OSC_MODE_TABLE
 
 // =============================================================================
 // SYSTEM

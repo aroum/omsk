@@ -9,8 +9,6 @@
 #include "pico/mutex.h"
 #include "pico/util/queue.h"
 #include "synth.h"
-#include "../tables/vcf_table_manager.h"
-#include "../tables/noise_lut_data.h"
 
 typedef bool boolean;
 uint8_t g_midi_ch = 0;
@@ -329,80 +327,6 @@ static uint8_t adv_quantize_note(uint8_t note, uint8_t scale, uint8_t root_key) 
     return note; // fallback
 }
 
-// --- Noise Color biquad state (Pink -> White -> Blue), как в python_demo ---
-static float noise_b0 = 1.0f, noise_b1 = 0.0f, noise_b2 = 0.0f;
-static float noise_a1 = 0.0f, noise_a2 = 0.0f;
-static float noise_z1 = 0.0f, noise_z2 = 0.0f;
-static uint8_t noise_prev_color = 0xFF;
-static uint8_t noise_mode =
-    0; // 0 = white, 1 = LPF (pink/brown), 2 = HPF (blue)
-
-static inline void noise_update_coeffs(uint8_t color, float sampleRate) {
-  if (color == noise_prev_color)
-    return;
-  noise_prev_color = color;
-
-  noise_mode = g_noise_mode_lut[color];
-  if (noise_mode == 0) {
-    return;
-  }
-
-  const float *coeffs = g_noise_filter_lut[color];
-  noise_b0 = coeffs[0];
-  noise_b1 = coeffs[1];
-  noise_b2 = coeffs[2];
-  noise_a1 = coeffs[3];
-  noise_a2 = coeffs[4];
-}
-
-static inline float noise_process_sample(float x) {
-  if (noise_mode == 0) {
-    return x;
-  }
-  float v = x - noise_a1 * noise_z1 - noise_a2 * noise_z2;
-  float y = noise_b0 * v + noise_b1 * noise_z1 + noise_b2 * noise_z2;
-  noise_z2 = noise_z1;
-  noise_z1 = v;
-  return y;
-}
-
-static float mix_volume_lut[128];
-static bool mix_volume_lut_init = false;
-
-static inline float mix_volume_gain(uint8_t v) {
-  if (!mix_volume_lut_init) {
-    for (int i = 0; i < 128; i++) {
-      mix_volume_lut[i] = sqrtf((float)i / 127.0f);
-    }
-    mix_volume_lut_init = true;
-  }
-  return mix_volume_lut[v];
-}
-
-static inline float step_engine_tri(float p) {
-  float x = p - floorf(p);
-  float v = 4.0f * fabsf(x - 0.5f) - 1.0f;
-  return v;
-}
-
-static inline float step_engine_saw(float p) {
-  float x = p - floorf(p);
-  return 2.0f * x - 1.0f;
-}
-
-static inline float step_engine_square_pw(float p, float pw) {
-  float x = p - floorf(p);
-  return (x < pw) ? 1.0f : -1.0f;
-}
-
-#include "omsk_pam4_table.h"
-
-
-
-
-
-
-
 static inline float step_engine_clampf(float v, float lo, float hi) {
   if (v < lo)
     return lo;
@@ -449,157 +373,10 @@ static inline float step_engine_apply_mod(ParamID param, float base, float lfo1,
 extern "C" uint16_t pra_synth_get_modulated_param_value(ParamID pid) {
   mutex_enter_blocking(&synth_mutex);
   uint16_t val = (uint16_t)step_engine_apply_mod_full(
-      pid, (float)pra_synth_get_param_value(pid), 0, 0, 0, 0, 
+      pid, (float)synth_get_param_value(pid), 0, 0, 0, 0, 
       step_engine_modwheel, step_engine_aftertouch, step_engine_breath);
   mutex_exit(&synth_mutex);
   return val;
-}
-
-static uint16_t pra_synth_get_param_value(ParamID pid) {
-  switch (pid) {
-  case PARAM_VCO1_TRANSPOSE:
-    return params.vco1_transpose;
-  case PARAM_VCO1_DETUNE:
-    return params.vco1_detune;
-  case PARAM_VCO1_WAVE:
-    return params.vco1_wave;
-  case PARAM_VCO1_SHAPE:
-    return params.vco1_shape;
-  case PARAM_VCO2_TRANSPOSE:
-    return params.vco2_transpose;
-  case PARAM_VCO2_DETUNE:
-    return params.vco2_detune;
-  case PARAM_VCO2_WAVE:
-    return params.vco2_wave;
-  case PARAM_VCO2_SHAPE:
-    return params.vco2_shape;
-  case PARAM_VCF1_CUTOFF:
-    return params.vcf1_cutoff;
-  case PARAM_VCF1_RES:
-    return params.vcf1_res;
-  case PARAM_VCF1_DRIVE:
-    return params.vcf1_drive;
-  case PARAM_VCF1_MIX:
-    return params.vcf1_mix;
-  case PARAM_VCF2_CUTOFF:
-    return params.vcf2_cutoff;
-  case PARAM_VCF2_RES:
-    return params.vcf2_res;
-  case PARAM_VCF2_DRIVE:
-    return params.vcf2_drive;
-  case PARAM_VCF2_MIX:
-    return params.vcf2_mix;
-  case PARAM_VCF_KEY_TRACK:
-    return params.vcf_key_track;
-  case PARAM_LFO1_RATE:
-    return params.lfo1_rate;
-  case PARAM_LFO1_SMOOTH:
-    return params.lfo1_smooth;
-  case PARAM_LFO1_WAVE:
-    return params.lfo1_wave;
-  case PARAM_LFO1_SHAPE:
-    return params.lfo1_shape;
-  case PARAM_LFO2_RATE:
-    return params.lfo2_rate;
-  case PARAM_LFO2_SMOOTH:
-    return params.lfo2_smooth;
-  case PARAM_LFO2_WAVE:
-    return params.lfo2_wave;
-  case PARAM_LFO2_SHAPE:
-    return params.lfo2_shape;
-  case PARAM_EG1_ATTACK:
-    return params.eg1_attack;
-  case PARAM_EG1_DECAY:
-    return params.eg1_decay;
-  case PARAM_EG1_SUSTAIN:
-    return params.eg1_sustain;
-  case PARAM_EG1_RELEASE:
-    return params.eg1_release;
-  case PARAM_EG2_ATTACK:
-    return params.eg2_attack;
-  case PARAM_EG2_DECAY:
-    return params.eg2_decay;
-  case PARAM_EG2_SUSTAIN:
-    return params.eg2_sustain;
-  case PARAM_EG2_RELEASE:
-    return params.eg2_release;
-  case PARAM_MIX_VCO1_VOL:
-    return params.mix_vco_balance;
-  case PARAM_MIX_VCO2_VOL:
-    return params.mix_osc_noise;
-  case PARAM_MIX_PHASE2:
-    return params.mix_phase2;
-  case PARAM_MIX_NOISE_VOL:
-    return params.mix_master;
-  case PARAM_NOISE_COLOR:
-    return params.noise_color;
-  case PARAM_GLIDE_POLY:
-    return params.glide_poly;
-  case PARAM_GLIDE_TIME:
-    return params.glide_time;
-  case PARAM_GLIDE_SLOPE:
-    return params.glide_slope;
-  case PARAM_GLIDE_MODE:
-    return params.glide_mode;
-  case PARAM_FX1_TIME:
-    return params.fx1_time;
-  case PARAM_FX1_FEEDBACK:
-    return params.fx1_feedback;
-  case PARAM_FX1_SPREAD:
-    return params.fx1_spread;
-  case PARAM_FX1_MIX:
-    return params.fx1_mix;
-  case PARAM_FX2_TIME:
-    return params.fx2_time;
-  case PARAM_FX2_FEEDBACK:
-    return params.fx2_feedback;
-  case PARAM_MOD_ROUTING1:
-    return params.mod_routing1;
-  case PARAM_MOD_DEPTH1:
-    return params.mod_depth1;
-  case PARAM_MOD_ROUTING2:
-    return params.mod_routing2;
-  case PARAM_MOD_DEPTH2:
-    return params.mod_depth2;
-  case PARAM_FX2_TONE:
-    return params.fx2_tone;
-  case PARAM_FX2_MIX:
-    return params.fx2_mix;
-  case PARAM_ARP_RATE:
-    return params.arp_rate;
-  case PARAM_ADV_MIDI_CH:
-    return params.midi_channel;
-  case PARAM_EG1_ATTACK_CURVE:
-    return params.eg1_attack_curve;
-  case PARAM_EG1_DECAY_CURVE:
-    return params.eg1_decay_curve;
-  case PARAM_EG1_RELEASE_CURVE:
-    return params.eg1_release_curve;
-  case PARAM_EG2_ATTACK_CURVE:
-    return params.eg2_attack_curve;
-  case PARAM_EG2_DECAY_CURVE:
-    return params.eg2_decay_curve;
-  case PARAM_EG2_RELEASE_CURVE:
-    return params.eg2_release_curve;
-  case PARAM_ARP_MODE:
-    return params.arp_mode;
-  case PARAM_ARP_SWING:
-    return params.arp_swing;
-  case PARAM_ARP_OCT:
-    return params.arp_oct;
-  case PARAM_CHORD_MODE:
-    return params.chord_mode;
-  case PARAM_ADV_TEMPO:
-    return params.adv_tempo;
-  case PARAM_ADV_SCALE:
-    return params.adv_scale;
-  case PARAM_PITCH_BEND_RANGE:
-    return params.pitch_bend_range;
-  case PARAM_AMP_GAIN:
-    return params.amp_gain;
-  default:
-    return 0;
-  }
 }
 
 static void pra_synth_update_omsk_modulated_params() {
@@ -610,7 +387,7 @@ static void pra_synth_update_omsk_modulated_params() {
         params.mod_matrix[pid][SRC_AFTERTOUCH] != 64 ||
         params.mod_matrix[pid][SRC_BREATH] != 64) {
 
-      float base = (float)pra_synth_get_param_value(pid);
+      float base = (float)synth_get_param_value(pid);
       float modulated = step_engine_apply_mod(
           pid, base, 0, 0, 0, 0); // LFO/EG are 0, ModWheel used internally in step_engine_apply_mod()
       omsk_core_set_param((uint8_t)pid, (uint8_t)modulated);
