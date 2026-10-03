@@ -201,7 +201,7 @@ static void fm_dx7_pitchenv_keydown(FmPitchEnvelopeState *env, const FmPatch *pa
   fm_dx7_pitchenv_advance(env, patch, key_down ? 0u : 3u);
 }
 
-static int32_t fm_dx7_pitchenv_get_sample(FmPitchEnvelopeState *env, const FmPatch *patch, size_t samples) {
+static int32_t __not_in_flash_func(fm_dx7_pitchenv_get_sample)(FmPitchEnvelopeState *env, const FmPatch *patch, size_t samples) {
   if (env->stage_index < 3u || (env->stage_index < 4u && !env->key_down)) {
     int32_t inc = (int32_t)(((int64_t)env->increment_q24 * (int32_t)samples) / 32);
     if (env->rising) {
@@ -251,7 +251,7 @@ static void fm_dx7_lfo_keydown(FmLfoState *lfo) {
   lfo->delaystate = 0;
 }
 
-static int32_t fm_dx7_lfo_get_sample(FmLfoState *lfo, size_t samples) {
+static int32_t __not_in_flash_func(fm_dx7_lfo_get_sample)(FmLfoState *lfo, size_t samples) {
   lfo->phase += (uint32_t)(((uint64_t)lfo->delta * samples) / 32);
   int32_t x;
   switch (lfo->waveform) {
@@ -278,7 +278,7 @@ static int32_t fm_dx7_lfo_get_sample(FmLfoState *lfo, size_t samples) {
   return 1 << 23;
 }
 
-static int32_t fm_dx7_lfo_get_delay(FmLfoState *lfo, size_t samples) {
+static int32_t __not_in_flash_func(fm_dx7_lfo_get_delay)(FmLfoState *lfo, size_t samples) {
   uint32_t delta = lfo->delaystate < (1U << 31) ? lfo->delayinc : lfo->delayinc2;
   uint32_t scaled_delta = (uint32_t)(((uint64_t)delta * samples) / 32);
   uint64_t d = ((uint64_t)lfo->delaystate) + scaled_delta;
@@ -293,7 +293,7 @@ static int32_t fm_dx7_lfo_get_delay(FmLfoState *lfo, size_t samples) {
   }
 }
 
-static int32_t fm_dx7_freqlut_lookup(int32_t logfreq) {
+static int32_t __not_in_flash_func(fm_dx7_freqlut_lookup)(int32_t logfreq) {
   int ix = (logfreq & 0xffffff) >> 14;
   int32_t y0 = k_dx7_freqlut[ix];
   int32_t y1 = k_dx7_freqlut[ix + 1];
@@ -809,7 +809,7 @@ void fm_synth_panic(void) {
 }
 
 // Emulate DX7 algorithmic operator configurations
-static void fm_dx7_render_voice(FmVoice *v, int32_t *mix_buffer, size_t samples, int32_t lfo_val, int32_t lfo_delay) {
+static void __not_in_flash_func(fm_dx7_render_voice)(FmVoice *v, int32_t *mix_buffer, size_t samples, int32_t lfo_val, int32_t lfo_delay) {
   if (!v->active) return;
 
   // ==== LFO AND PITCH MODULATION ====
@@ -926,7 +926,8 @@ static void fm_dx7_render_voice(FmVoice *v, int32_t *mix_buffer, size_t samples,
   int32_t fdbk = (7 - g_active_patch.feedback) + 2;
 
   const uint8_t alg_idx = g_active_patch.algorithm < 32 ? g_active_patch.algorithm : 0;
-  const OpStep *steps = k_ym21280_steps[alg_idx];
+  OpStep steps[FM_SYNTH_OPERATOR_COUNT];
+  memcpy(steps, k_ym21280_steps[alg_idx], sizeof(steps));
 
   int32_t modulation_15 = v->modulation_15;
   int32_t memory_15 = v->memory_15;
@@ -1089,10 +1090,10 @@ static void fm_dx7_render_voice(FmVoice *v, int32_t *mix_buffer, size_t samples,
   }
 }
 
-void fm_synth_render_block(int16_t *buffer, size_t samples) {
+void __not_in_flash_func(fm_synth_render_block)(int16_t *buffer, size_t samples) {
   int32_t mix_buf[256];
   if (samples > 256) samples = 256;
-  memset(mix_buf, 0, sizeof(mix_buf));
+  memset(mix_buf, 0, samples * sizeof(int32_t));
 
   int32_t lfo_val = fm_dx7_lfo_get_sample(&g_lfo, samples);
   int32_t lfo_delay = fm_dx7_lfo_get_delay(&g_lfo, samples);
