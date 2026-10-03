@@ -7,25 +7,25 @@
 
 ### Basic
 
-| name                              | pcs | type          | package | position          | description                      |
-| --------------------------------- | --: | ------------- | ------- | ----------------- | -------------------------------- |
-| 1N4148W                           |  17 | Diode         | SOD-323 | D1 - D17          | keyboard matrix + MIDI           |
-| 100nF x7r 50v                     |   4 | Capacitor     | 0805    | C1, C3, C4, C5    | MIDI jacks + PWM Audio           |
-| 47uF x7r 50v                      |   1 | Capacitor     | 1210    | C2                | PWM audio                        |
-| 10R for 3v3 or 220 Ohm for 5v out |   1 | Resistor      | 0603    | R4                | MIDI jacks                       |
-| 33R for 3v3 or 220 Ohm for 5v out |   1 | Resistor      | 0603    | R3                | MIDI jacks                       |
-| 100R                              |   1 | Resistor      | 0603    | R6                | PWM audio                        |
-| 220R                              |   2 | Resistor      | 0603    | R1, R5            | PWM audio + MIDI jacks           |
-| 470R                              |   1 | Resistor      | 0603    | R2                | MIDI jacks                       |
-| 1.8k                              |   1 | Resistor      | 0603    | R7                | PWM audio                        |
-| PJ-313 (3 color)                  |   3 | jack sockets  | THD     | J2, J3, J4        | Audio + MIDI jacks               |
-| Alps EC12 8.5 mm                  |   4 | Encoder       | THD     | ROTENC1 - ROTENC4 | Encoder for more info view below |
-| H11L1 SMD                         |   1 | Optocoupler   | SOP-6   | U1                | MIDI jacks                       |
-| Kailh choc sockets                |  16 | Switch socket | SMD     | SW1 - SW16        | keyboard                         |
-| Kailh choc v2                     |  16 | Switch        | THD     | SW1 - SW16        | keyboard                         |
-| NC7WZ16P6X                        |   1 | IC            | SC-70-6 | U2                | MIDI jacks + PWM audio           |
-| rp2040/rp2350 zero                |   1 | MCU           | Module  | MCU1              | MCU (rp2350 recomended)          |
-| WS2812B MINI-E                    |  22 | RGB LED       | 3228SMD | LED1 - LED22      | WS2812B MINI-E                   |
+| name                              |  pcs | type          | package | position          | description                      |
+| --------------------------------- | ---: | ------------- | ------- | ----------------- | -------------------------------- |
+| 1N4148W                           |   17 | Diode         | SOD-323 | D1 - D17          | keyboard matrix + MIDI           |
+| 100nF x7r 50v                     |    4 | Capacitor     | 0805    | C1, C3, C4, C5    | MIDI jacks + PWM Audio           |
+| 47uF x7r 50v                      |    1 | Capacitor     | 1210    | C2                | PWM audio                        |
+| 10R for 3v3 or 220 Ohm for 5v out |    1 | Resistor      | 0603    | R4                | MIDI jacks                       |
+| 33R for 3v3 or 220 Ohm for 5v out |    1 | Resistor      | 0603    | R3                | MIDI jacks                       |
+| 100R                              |    1 | Resistor      | 0603    | R6                | PWM audio                        |
+| 220R                              |    2 | Resistor      | 0603    | R1, R5            | PWM audio + MIDI jacks           |
+| 470R                              |    1 | Resistor      | 0603    | R2                | MIDI jacks                       |
+| 1.8k                              |    1 | Resistor      | 0603    | R7                | PWM audio                        |
+| PJ-313 (3 color)                  |    3 | jack sockets  | THD     | J2, J3, J4        | Audio + MIDI jacks               |
+| Alps EC12 8.5 mm                  |    4 | Encoder       | THD     | ROTENC1 - ROTENC4 | Encoder for more info view below |
+| H11L1 SMD                         |    1 | Optocoupler   | SOP-6   | U1                | MIDI jacks                       |
+| Kailh choc sockets                |   16 | Switch socket | SMD     | SW1 - SW16        | keyboard                         |
+| Kailh choc v2                     |   16 | Switch        | THD     | SW1 - SW16        | keyboard                         |
+| NC7WZ16P6X                        |    1 | IC            | SC-70-6 | U2                | MIDI jacks + PWM audio           |
+| rp2040/rp2350 zero                |    1 | MCU           | Module  | MCU1              | MCU (rp2350 recomended)          |
+| WS2812B MINI-E                    |   22 | RGB LED       | 3228SMD | LED1 - LED22      | WS2812B MINI-E                   |
 
 #### Encoders
 
@@ -40,10 +40,10 @@ You can choose any one of the following encoder models:
 
 ### Extra
 
-| name                            | pcs | type    | package | description                                                    |
-| ------------------------------- | --: | ------- | ------- | -------------------------------------------------------------- |
-| MIDI cable (DIN5 M to jack 3.5) |   1 | Cable   | Cable   | TRS to DIN5 MIDI cable (Type A) for use external MIDI hardware |
-| YS-SK6812MINI-E                 |  22 | RGB LED | 3228SMD | RGB LEDs                                                       |
+| name                            |  pcs | type    | package | description                                                    |
+| ------------------------------- | ---: | ------- | ------- | -------------------------------------------------------------- |
+| MIDI cable (DIN5 M to jack 3.5) |    1 | Cable   | Cable   | TRS to DIN5 MIDI cable (Type A) for use external MIDI hardware |
+| YS-SK6812MINI-E                 |   22 | RGB LED | 3228SMD | RGB LEDs                                                       |
 
 #### OLED
 
@@ -83,13 +83,14 @@ GY-PCM5102 I2S PCM5102A module
 
 ##### Pins
 
-| Module pin | MCU pin |
-| ---------- | ------- |
-| **GND**    | GND     |
-| **VCC**    | 5V      |
-| **BCK**    | GPIO17  |
-| **LRCK**   | GPIO18  |
-| **DIN**    | GPIO19  |
+| Module pin | MCU pin / Connection                                        |
+| ---------- | ----------------------------------------------------------- |
+| **GND**    | GND                                                         |
+| **VCC**    | 5V                                                          |
+| **BCK**    | GPIO17                                                      |
+| **LRCK**   | GPIO18                                                      |
+| **DIN**    | GPIO19                                                      |
+| **SCK**    | GND (solder jumper next to SCK pin or wire to GND)          |
 
 ## Build guide
 
@@ -107,7 +108,8 @@ GY-PCM5102 I2S PCM5102A module
   - Solder the `5V/3V3` jumper to the required position. This jumper controls the supply voltage of the NC7WZ16P6X (U2) IC. This affects the voltage of the MIDI OUT jack (for 5V, you must change resistors R3-R4 to 220 Ohm) and the PWM audio output level (5V increases the volume significantly, but might introduce noise from the USB power line).
 - Connect external modules if needed:
   - **DAC**
-    - Solder the jumpers on the module: 1L, 2L, 3H, 4L
+    - Solder the jumpers on the back of the module: 1L, 2L, 3H, 4L
+    - Solder the jumper bridge next to the SCK pin on the module (bridges SCK to GND to enable internal PLL for 3-wire I2S)
     - Desolder or cut off the audio jack from the module, as it takes too much space and won't fit in the case.
     - Connect using wires:
       - GND on the module to GND on the PCB
