@@ -104,6 +104,7 @@ jobs:
             firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}.uf2
             firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}.bin
             firmware/${{ matrix.firmware }}/build/*_${{ matrix.platform }}_${{ matrix.audio }}_${{ matrix.display }}.elf
+          retention-days: 3
 
   release:
     name: Create & Publish Release Assets
