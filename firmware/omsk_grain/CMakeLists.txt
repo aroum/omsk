@@ -87,6 +87,16 @@ target_link_options(omsk_grain PRIVATE
     -Wl,--gc-sections
 )
 
+# Audio and display configurations passed via CMake flags
+if(DEFINED AUDIO_OUT_DAC AND AUDIO_OUT_DAC)
+    target_compile_definitions(omsk_grain PRIVATE AUDIO_OUT_DAC=1)
+elseif(DEFINED AUDIO_OUT_PWM AND AUDIO_OUT_PWM)
+    target_compile_definitions(omsk_grain PRIVATE AUDIO_OUT_PWM=1)
+endif()
+if(DEFINED CFG_OLED_TYPE)
+    target_compile_definitions(omsk_grain PRIVATE CFG_OLED_TYPE=${CFG_OLED_TYPE})
+endif()
+
 pico_enable_stdio_usb(omsk_grain 0)
 pico_enable_stdio_uart(omsk_grain 1)
 

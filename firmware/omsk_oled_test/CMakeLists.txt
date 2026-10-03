@@ -49,6 +49,10 @@ target_link_options(omsk_oled_test PRIVATE
     -Wl,--gc-sections
 )
 
+if(DEFINED CFG_OLED_TYPE)
+    target_compile_definitions(omsk_oled_test PRIVATE CFG_OLED_TYPE=${CFG_OLED_TYPE})
+endif()
+
 pico_enable_stdio_usb(omsk_oled_test 0)
 pico_enable_stdio_uart(omsk_oled_test 1)
 

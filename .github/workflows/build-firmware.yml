@@ -73,15 +73,15 @@ jobs:
 
           if [ "${{ matrix.firmware }}" = "omsk_grain" ]; then
             if [ "${{ matrix.audio }}" = "dac" ]; then
-              EXTRA_FLAGS="$EXTRA_FLAGS -DAUDIO_OUT_DAC=1"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DAUDIO_OUT_DAC=1 -DAUDIO_OUT_PWM=0"
             else
-              EXTRA_FLAGS="$EXTRA_FLAGS -DAUDIO_OUT_PWM=1"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DAUDIO_OUT_DAC=0 -DAUDIO_OUT_PWM=1"
             fi
           elif [ "${{ matrix.firmware }}" = "omsk_fm" ] || [ "${{ matrix.firmware }}" = "omsk_wave" ]; then
             if [ "${{ matrix.audio }}" = "dac" ]; then
-              EXTRA_FLAGS="$EXTRA_FLAGS -DCFG_ENABLE_DAC=1 -DCFG_ENABLE_PWM8_AUDIO=0"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DCFG_ENABLE_DAC=1 -DCFG_ENABLE_PWM8_AUDIO=0 -DCFG_ENABLE_BETTER_PWM=0"
             else
-              EXTRA_FLAGS="$EXTRA_FLAGS -DCFG_ENABLE_DAC=0 -DCFG_ENABLE_PWM8_AUDIO=1"
+              EXTRA_FLAGS="$EXTRA_FLAGS -DCFG_ENABLE_DAC=0 -DCFG_ENABLE_PWM8_AUDIO=1 -DCFG_ENABLE_BETTER_PWM=1"
             fi
           fi
 

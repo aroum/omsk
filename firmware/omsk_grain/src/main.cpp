@@ -241,10 +241,14 @@ static void init_i2c_oled() {
     gpio_pull_up(PIN_OLED_SDA);
     gpio_pull_up(PIN_OLED_SCL);
 
+#if CFG_OLED_TYPE == 1
+    u8g2_Setup_sh1107_i2c_64x128_f(&u8g2, U8G2_R1, u8x8_byte_pico_i2c, u8x8_gpio_and_delay_pico);
+#else
 #ifdef OLED_FLIP
     u8g2_Setup_ssd1312_i2c_128x64_noname_f(&u8g2, U8G2_R2, u8x8_byte_pico_i2c, u8x8_gpio_and_delay_pico);
 #else
     u8g2_Setup_ssd1312_i2c_128x64_noname_f(&u8g2, U8G2_R0, u8x8_byte_pico_i2c, u8x8_gpio_and_delay_pico);
+#endif
 #endif
     oled_init(&u8g2);
 }

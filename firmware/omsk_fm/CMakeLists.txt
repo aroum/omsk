@@ -92,6 +92,20 @@ target_link_options(omsk_fm PRIVATE
     -Wl,--strip-debug   # Remove debug symbols from final binary
 )
 
+# Audio and display configurations passed via CMake flags
+if(DEFINED CFG_ENABLE_DAC)
+    target_compile_definitions(omsk_fm PRIVATE CFG_ENABLE_DAC=${CFG_ENABLE_DAC})
+endif()
+if(DEFINED CFG_ENABLE_PWM8_AUDIO)
+    target_compile_definitions(omsk_fm PRIVATE CFG_ENABLE_PWM8_AUDIO=${CFG_ENABLE_PWM8_AUDIO})
+endif()
+if(DEFINED CFG_ENABLE_BETTER_PWM)
+    target_compile_definitions(omsk_fm PRIVATE CFG_ENABLE_BETTER_PWM=${CFG_ENABLE_BETTER_PWM})
+endif()
+if(DEFINED CFG_OLED_TYPE)
+    target_compile_definitions(omsk_fm PRIVATE CFG_OLED_TYPE=${CFG_OLED_TYPE})
+endif()
+
 # Enable USB output, disable UART output
 pico_enable_stdio_usb(omsk_fm 0)
 pico_enable_stdio_uart(omsk_fm 0)

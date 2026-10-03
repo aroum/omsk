@@ -39,8 +39,9 @@
 // =============================================================================
 //   AUDIO_OUT_PWM  — Dual PWM output (pin 29 L, pin 21 R)
 //   AUDIO_OUT_DAC  — I2S DAC output  (PCM5102A etc.)
-// #define AUDIO_OUT_DAC
+#if !defined(AUDIO_OUT_DAC) && !defined(AUDIO_OUT_PWM)
 #define AUDIO_OUT_PWM
+#endif
 
 // =============================================================================
 // DISPLAY

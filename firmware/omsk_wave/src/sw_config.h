@@ -23,12 +23,25 @@ static const char CFG_PIANO_LAYOUT[CFG_PIANO_LAYOUT_ROWS][CFG_PIANO_LAYOUT_COLS]
 // USB Audio
 #define CFG_ENABLE_USB_AUDIO 0
 
-// PWM Audio
-#define CFG_ENABLE_PWM8_AUDIO 1    // mono 8 bit
-#define CFG_ENABLE_BETTER_PWM  1   // 10-bit PWM with noise shaping for lower noise floor
-
-// I2S DAC
+// PWM Audio & I2S DAC
+#if defined(CFG_ENABLE_DAC) && CFG_ENABLE_DAC
+#ifndef CFG_ENABLE_PWM8_AUDIO
+#define CFG_ENABLE_PWM8_AUDIO 0    // mono 8 bit
+#endif
+#ifndef CFG_ENABLE_BETTER_PWM
+#define CFG_ENABLE_BETTER_PWM  0   // 10-bit PWM with noise shaping for lower noise floor
+#endif
+#else
+#ifndef CFG_ENABLE_DAC
 #define CFG_ENABLE_DAC 0
+#endif
+#ifndef CFG_ENABLE_PWM8_AUDIO
+#define CFG_ENABLE_PWM8_AUDIO 1    // mono 8 bit
+#endif
+#ifndef CFG_ENABLE_BETTER_PWM
+#define CFG_ENABLE_BETTER_PWM  1   // 10-bit PWM with noise shaping for lower noise floor
+#endif
+#endif
 
 // =============================================================================
 // DISPLAY
