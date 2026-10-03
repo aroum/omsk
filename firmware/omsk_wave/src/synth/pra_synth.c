@@ -7,6 +7,7 @@
 #include "../sequencer/sequencer.h"
 #include "audio.h"
 #include "pico/mutex.h"
+#include "pico/platform.h"
 #include "pico/util/queue.h"
 #include "synth.h"
 
@@ -500,7 +501,7 @@ extern "C" int16_t pra_synth_get_sample(void) {
   return (int16_t)v;
 }
 
-extern "C" void pra_synth_get_stereo(int16_t *left, int16_t *right) {
+extern "C" void __not_in_flash_func(pra_synth_get_stereo)(int16_t *left, int16_t *right) {
   static uint32_t sample_counter = 0;
   
   mutex_enter_blocking(&synth_mutex);

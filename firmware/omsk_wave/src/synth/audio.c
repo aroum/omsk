@@ -3,10 +3,12 @@
 // Hardware SDK includes MUST come before PIO generated headers
 // (PIO headers contain inline functions using clock_get_hz, etc.)
 #include "hardware/clocks.h"
+#include "hardware/dma.h"
 #include "hardware/gpio.h"
 #include "hardware/irq.h"
 #include "hardware/pio.h"
 #include "hardware/pwm.h"
+#include "hardware/sync.h"
 #include "pico/multicore.h"
 #include "pico/stdlib.h"
 #include "pico/util/queue.h"
@@ -33,48 +35,115 @@ bool usb_audio_push_sample(int16_t left, int16_t right);
 PIO audio_pio = pio0;
 
 #if CFG_ENABLE_DAC
+#define I2S_BUFFER_COUNT 16
+#define I2S_BUFFER_SAMPLES 32
+#define I2S_PREFILL_BUFFERS 8
+
 uint audio_sm_i2s;
-#endif
+static int audio_dma_chan = -1;
 
-#if CFG_ENABLE_DAC
+static uint32_t audio_ring_buf[I2S_BUFFER_COUNT][I2S_BUFFER_SAMPLES];
+static uint32_t audio_silence_buf[I2S_BUFFER_SAMPLES]; // zero-initialized
+static volatile uint8_t audio_write_idx = 0;
+static volatile uint8_t audio_play_idx = 0;
+static volatile uint8_t audio_buffers_ready = 0;
 
-void audio_core_entry(void) {
-  multicore_lockout_victim_init();
-  int16_t left = 0;
-  int16_t right = 0;
-  while (1) {
-    pra_synth_get_stereo(&left, &right);
-    left  = (int16_t)((int32_t)left  * CFG_MASTER_VOLUME_PERCENT / 100);
-    right = (int16_t)((int32_t)right * CFG_MASTER_VOLUME_PERCENT / 100);
-
-#if CFG_ENABLE_USB_AUDIO
-    usb_audio_push_sample(left, right);
-#endif
-
-    // I2S PIO expects one 32-bit word: left channel in upper 16 bits,
-    // right channel in lower 16 bits. PIO side-set controls LRCK automatically.
-    // DO NOT call gpio_put(PIN_DAC_I2S_LRCK) here — it conflicts with PIO.
-    uint32_t sample = ((uint32_t)(uint16_t)left << 16) | (uint16_t)right;
-    pio_sm_put_blocking(audio_pio, audio_sm_i2s, sample);
-
-
+static void __not_in_flash_func(audio_dma_irq_handler)(void) {
+  dma_channel_acknowledge_irq0(audio_dma_chan);
+  if (audio_buffers_ready > 0) {
+    dma_channel_transfer_from_buffer_now(audio_dma_chan, audio_ring_buf[audio_play_idx], I2S_BUFFER_SAMPLES);
+    audio_play_idx = (audio_play_idx + 1) % I2S_BUFFER_COUNT;
+    audio_buffers_ready--;
+  } else {
+    // Underflow protection: keep I2S clocks active and output silence
+    dma_channel_transfer_from_buffer_now(audio_dma_chan, audio_silence_buf, I2S_BUFFER_SAMPLES);
   }
 }
-// removed i2s_tx_program_init
+
+void __not_in_flash_func(audio_core_entry)(void) {
+  multicore_lockout_victim_init();
+
+  // Pre-render initial audio blocks to provide headroom
+  for (int b = 0; b < I2S_PREFILL_BUFFERS; b++) {
+    for (int i = 0; i < I2S_BUFFER_SAMPLES; i++) {
+      int16_t left = 0;
+      int16_t right = 0;
+      pra_synth_get_stereo(&left, &right);
+      left  = (int16_t)((int32_t)left  * CFG_MASTER_VOLUME_PERCENT / 100);
+      right = (int16_t)((int32_t)right * CFG_MASTER_VOLUME_PERCENT / 100);
+
+#if CFG_ENABLE_USB_AUDIO
+      usb_audio_push_sample(left, right);
+#endif
+
+      audio_ring_buf[audio_write_idx][i] = ((uint32_t)(uint16_t)left << 16) | (uint16_t)right;
+    }
+    audio_write_idx = (audio_write_idx + 1) % I2S_BUFFER_COUNT;
+    audio_buffers_ready++;
+  }
+
+  // Setup DMA interrupt exclusively on Core 1
+  irq_set_exclusive_handler(DMA_IRQ_0, audio_dma_irq_handler);
+  irq_set_enabled(DMA_IRQ_0, true);
+
+  // Kick off DMA playback
+  audio_dma_irq_handler();
+
+  while (1) {
+    while (audio_buffers_ready >= I2S_BUFFER_COUNT - 1) {
+      tight_loop_contents();
+    }
+
+    for (int i = 0; i < I2S_BUFFER_SAMPLES; i++) {
+      int16_t left = 0;
+      int16_t right = 0;
+      pra_synth_get_stereo(&left, &right);
+      left  = (int16_t)((int32_t)left  * CFG_MASTER_VOLUME_PERCENT / 100);
+      right = (int16_t)((int32_t)right * CFG_MASTER_VOLUME_PERCENT / 100);
+
+#if CFG_ENABLE_USB_AUDIO
+      usb_audio_push_sample(left, right);
+#endif
+
+      audio_ring_buf[audio_write_idx][i] = ((uint32_t)(uint16_t)left << 16) | (uint16_t)right;
+    }
+    audio_write_idx = (audio_write_idx + 1) % I2S_BUFFER_COUNT;
+
+    uint32_t save = save_and_disable_interrupts();
+    audio_buffers_ready++;
+    restore_interrupts(save);
+  }
+}
+
 void audio_init(void) {
 #if CFG_ENABLE_USB_AUDIO
   usb_audio_init();
 #endif
-  // NOTE: Do NOT manually init/control PIN_DAC_I2S_LRCK here.
-  // The PIO program drives LRCK via side-set. Manual gpio_init would conflict.
   uint offset = pio_add_program(audio_pio, &i2s_tx_program);
   audio_sm_i2s = pio_claim_unused_sm(audio_pio, true);
   i2s_tx_program_init(audio_pio, audio_sm_i2s, offset, PIN_DAC_I2S_DATA,
                       PIN_DAC_I2S_BCK, AUDIO_SAMPLE_RATE);
 
+  audio_dma_chan = dma_claim_unused_channel(true);
+  dma_channel_config c = dma_channel_get_default_config(audio_dma_chan);
+  channel_config_set_transfer_data_size(&c, DMA_SIZE_32);
+  channel_config_set_read_increment(&c, true);
+  channel_config_set_write_increment(&c, false);
+  channel_config_set_dreq(&c, pio_get_dreq(audio_pio, audio_sm_i2s, true));
+
+  dma_channel_configure(
+      audio_dma_chan,
+      &c,
+      &audio_pio->txf[audio_sm_i2s],
+      NULL,
+      I2S_BUFFER_SAMPLES,
+      false
+  );
+
+  dma_channel_set_irq0_enabled(audio_dma_chan, true);
+
   pra_synth_init();
 }
-
 
 void audio_start(void) { multicore_launch_core1(audio_core_entry); }
 
